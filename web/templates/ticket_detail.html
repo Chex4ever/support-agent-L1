@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block title %}Тикет #{{ ticket.id if ticket else '' }} — iRidi Support Agent{% endblock %}
+{% block content %}
+
+{% if ticket %}
+<div class="flex-between mb-4">
+    <div>
+        <a href="/tickets" class="text-muted text-sm">← Назад к списку</a>
+        <h2 style="font-size: 20px; margin-top: 4px;">{{ ticket.title }}</h2>
+        <div class="flex gap-2" style="margin-top: 6px;">
+            <span class="text-muted text-sm">#{{ ticket.id }}</span>
+            {% set status = (ticket.status or '').lower() %}
+            {% if 'new' in status %}
+            <span class="badge badge-new">New</span>
+            {% elif 'open' in status %}
+            <span class="badge badge-open">Open</span>
+            {% elif 'solved' in status %}
+            <span class="badge badge-solved">Solved</span>
+            {% elif 'pending' in status %}
+            <span class="badge badge-pending">Pending</span>
+            {% elif 'holding' in status %}
+            <span class="badge badge-holding">Holding</span>
+            {% else %}
+            <span class="badge badge-open">{{ ticket.status or 'Open' }}</span>
+            {% endif %}
+            <span class="text-muted text-sm">Клиент: {{ ticket.customer or '—' }}</span>
+            {% if ticket.group %}
+            <span class="text-muted text-sm">Группа: {{ ticket.group }}</span>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="grid-2">
+    <div>
+        <div class="card">
+            <h3 style="font-size: 14px; color: #8899bb; margin-bottom: 12px;">История обращений</h3>
+
+            {% if ticket.description %}
+            <div class="msg">
+                <div class="meta">Описание</div>
+                <div>{{ ticket.description }}</div>
+            </div>
+            {% endif %}
+
+            {% for m in ticket.messages %}
+            <div class="msg">
+                <div class="meta">
+                    <strong>{{ m.author or '—' }}</strong>
+                    {% if m.date %}<span> · {{ m.date }}</span>{% endif %}
+                </div>
+                <div>{{ m.body }}</div>
+            </div>
+            {% endfor %}
+
+            {% if not ticket.description and not ticket.messages %}
+            <p class="text-muted text-sm">Нет содержимого для отображения.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div>
+        {% if rec %}
+        <div class="card" style="border-color: {% if rec.confidence > 70 %}#28a745{% elif rec.confidence > 40 %}#ffc107{% else %}#dc3545{% endif %};">
+            <div class="flex-between mb-4">
+                <h3 style="font-size: 14px; color: #8899bb;">Анализ агента</h3>
+                <div class="flex gap-2">
+                    <span class="badge {% if rec.urgency_level >= 4 %}badge-critical{% elif rec.urgency_level >= 2 %}badge-holding{% else %}badge-solved{% endif %}">
+                        Срочность: {{ rec.urgency_level }}/5
+                    </span>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 12px;">
+                <span class="text-muted text-sm">Уверенность: </span>
+                <span class="text-sm {% if rec.confidence > 70 %}confidence-high{% elif rec.confidence > 40 %}confidence-mid{% else %}confidence-low{% endif %}">
+                    {{ rec.confidence }}%
+                </span>
+                <span class="text-muted text-sm" style="margin-left: 12px;">Продукт: </span>
+                <span class="text-sm">{{ rec.product }}</span>
+                <span class="text-muted text-sm" style="margin-left: 12px;">Категория: </span>
+                <span class="text-sm">{{ rec.problem_category }}</span>
+            </div>
+
+            {% if rec.notes_for_engineer %}
+            <div style="margin-bottom: 12px; padding: 10px; background: #0f1729; border-radius: 6px; border-left: 3px solid #3b6eff;">
+                <div class="text-muted text-sm" style="margin-bottom: 4px;">Заметка инженеру:</div>
+                <div class="text-sm">{{ rec.notes_for_engineer }}</div>
+            </div>
+            {% endif %}
+
+            {% if rec.suggested_answer %}
+            <div style="margin-bottom: 12px;">
+                <div class="text-muted text-sm" style="margin-bottom: 6px;">Рекомендуемый ответ:</div>
+                <div style="background: #0f1729; padding: 10px; border-radius: 6px; font-size: 13px; white-space: pre-wrap;">{{ rec.suggested_answer }}</div>
+            </div>
+            {% endif %}
+
+            {% if rec.doc_links %}
+            <div style="margin-bottom: 12px;">
+                <div class="text-muted text-sm" style="margin-bottom: 6px;">Ссылки на документацию:</div>
+                {% for link in rec.doc_links %}
+                <div style="margin-bottom: 4px;">
+                    <a href="{{ link.split(': ', 1)[1] if ': ' in link else link }}" target="_blank" class="text-sm">
+                        {{ link.split(': ', 1)[0] if ': ' in link else link }}
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if rec.clarifying_questions %}
+            <div>
+                <div class="text-muted text-sm" style="margin-bottom: 6px;">Уточняющие вопросы пользователю:</div>
+                <ol style="padding-left: 20px; font-size: 13px;">
+                    {% for q in rec.clarifying_questions %}
+                    <li style="margin-bottom: 4px;">{{ q }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="card">
+            <p class="text-muted">Не удалось проанализировать обращение.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% else %}
+<div class="card" style="text-align: center; padding: 60px 20px;">
+    <p style="color: #8899bb; font-size: 16px;">Тикет не найден</p>
+    <a href="/tickets" class="btn btn-outline btn-sm mt-4">← К списку тикетов</a>
+</div>
+{% endif %}
+{% endblock %}
