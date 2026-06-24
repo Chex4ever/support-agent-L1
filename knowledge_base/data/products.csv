@@ -1,0 +1,26 @@
+group;name;type;description;keywords;parent
+ecosystem;iRidi Pro;software_ecosystem;Флагманская платформа управления, среда разработки + сервер + клиент;iridium pro, iridi pro, iridium studio, i3 pro, iridium server, iridium transfer;-
+ecosystem;iRidi SCADA;software_ecosystem;SCADA/BMS для диспетчеризации зданий;scada, bms, диспетчеризация;-
+protocol;Bus77;protocol;CAN-протокол автоматизации;bus77, bus 77, can, басовка, басс, bus77 protocol;-
+software;Bus77 Home;software;ПО для настройки Bus77 Pro оборудования;bus77 home, bus77 home server;bus77
+software;Bus77 Lite;software;ПО для настройки Bus77 Lite оборудования;bus77 lite;bus77
+software;iRidium studio;software;IDE для разработки GUI;iridium studio, studio, iridium_studio;iridi pro
+software;i3 pro;software;Клиентское приложение для панелей;i3 pro, i3pro, i3, клиент;iridi pro
+software;iRidium server;software;Серверный демон;iridium server, сервер, server;iridi pro
+software;iRidium transfer;software;Утилита загрузки проектов;transfer, iridium transfer, трансфер;iridi pro
+hardware;HS Server;server;Основной сервер на RK3399;hs server, hsserver, hs-server, bus77 home server, iridi pro server;servers
+hardware;ProAV Advanced;server;ProAV Control Processor Advanced (PX-VP100-Advanced);proav advanced, px-vp100, proav;servers
+hardware;ProAV Basic;server;ProAV Control Processor Basic (PX-VM20-Basic);proav basic, px-vm20;servers
+hardware;Raspberry Pi 3;server;RPi3 сервер для небольших проектов;raspberry, rpi3, raspberry pi 3, rpi;servers
+hardware;Intel NUC;server;Сервер на базе Intel NUC;nuc, intel nuc;servers
+hardware;P6;panel;6-дюймовая сенсорная панель;p6, 6 дюймов;panels
+hardware;P7;panel;7-дюймовая сенсорная панель;p7, 7 дюймов;panels
+hardware;P8;panel;8-дюймовая сенсорная панель;p8, 8 дюймов;panels
+hardware;P10;panel;10-дюймовая сенсорная панель;p10, 10 дюймов;panels
+equipment;Bus77 Pro;equipment_line;Bus77 Pro оборудование (черное);bus77 pro, pro black, pro черный;bus77
+equipment;Bus77 Lite;equipment_line;Bus77 Lite оборудование (белое);bus77 lite, lite white, lite белый;bus77
+legacy;UMC C2;server;Устаревший контроллер;umc c2, umc2;legacy
+legacy;UMC C3;server;Устаревший контроллер (заменен на HS Server);umc c3, umc3;legacy
+legacy;UMC C4;server;HDL IntelliCenter 2;umc c4, umc4, hdl intellicenter;legacy
+legacy;i3 Lite;software;Устаревшее ПО для Lite;i3 lite, iridium lite;legacy
+service;iRidium Cloud;cloud;Облачное хранение лицензий и проектов;cloud, iridium cloud, облако;iridi pro
