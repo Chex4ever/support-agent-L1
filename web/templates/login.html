@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Вход — iRidi Support Agent{% endblock %}
+{% block content %}
+<div style="max-width: 420px; margin: 80px auto;">
+    <div class="card">
+        <h2 style="margin-bottom: 20px; font-size: 20px;">Вход в Omnidesk</h2>
+        <p style="color: #8899bb; font-size: 13px; margin-bottom: 20px;">
+            Введите данные сотрудника техподдержки iRidi для загрузки тикетов.
+        </p>
+        {% if error %}
+        <div style="background: #3d1f2a; border: 1px solid #dc3545; border-radius: 6px; padding: 10px 14px; margin-bottom: 16px; font-size: 13px; color: #f8a8b8;">
+            {{ error }}
+        </div>
+        {% endif %}
+        <form method="post" action="/login">
+            <div style="margin-bottom: 16px;">
+                <label for="email">Email (логин в Omnidesk)</label>
+                <input type="email" id="email" name="email" required placeholder="you@iridi.com">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" required placeholder="********">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Войти</button>
+        </form>
+        <p style="margin-top: 16px; font-size: 11px; color: #4a5a7c; text-align: center;">
+            Сессия хранится локально. Пароль не сохраняется.
+        </p>
+    </div>
+</div>
+{% endblock %}
