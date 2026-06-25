@@ -207,6 +207,17 @@ IR.SetVariable("Full.Path.To.Token", value);
 Создаёт токен, если его нет. **Работает только для `Global.*` (Project Tokens).**
 ⚠️ Для записи виртуальных тэгов сервера (`Server.Tags.*`) НЕ ИСПОЛЬЗУЕТСЯ.
 
+### 🚨 Ловушка: `|| default` с числовыми токенами
+```javascript
+var ph = parseFloat(IR.GetVariable("Server.Tags.phase")) || 60;  // БАГ!
+```
+Когда фаза дойдёт до 360 и сбросится в 0, `parseFloat("0")` вернёт `0`, `0 || 60` даст `60` — сброс значения.
+**Всегда используй `isNaN()` для проверки:**
+```javascript
+var ph = parseFloat(IR.GetVariable("Server.Tags.phase"));
+if (isNaN(ph)) ph = 60;  // только если реально нет значения
+```
+
 ### IR.GetServer().Set — запись виртуальных тэгов сервера
 ```javascript
 IR.GetServer().Set("TagName", value);
