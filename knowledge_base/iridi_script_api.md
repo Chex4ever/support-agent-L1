@@ -195,6 +195,7 @@ var val = IR.GetVariable("Full.Path.To.Token");
 Пути:
 - `System.*` — системные токены (Update, Online, и т.д.)
 - `Global.*` — Project Tokens (КУ/КОС)
+- `Server.Tags.*` — **виртуальные тэги сервера** (в серверном проекте)
 - `Drivers.DriverName.*` — токены драйвера
 - `UI.PageName.ItemName` — GUI-теги
 - `UI.PageName.ItemName.Value` — значение элемента
@@ -203,21 +204,36 @@ var val = IR.GetVariable("Full.Path.To.Token");
 ```javascript
 IR.SetVariable("Full.Path.To.Token", value);
 ```
-Создаёт токен, если его нет.
+Создаёт токен, если его нет. **Работает только для `Global.*` (Project Tokens).**
+⚠️ Для записи виртуальных тэгов сервера (`Server.Tags.*`) НЕ ИСПОЛЬЗУЕТСЯ.
+
+### IR.GetServer().Set — запись виртуальных тэгов сервера
+```javascript
+IR.GetServer().Set("TagName", value);
+var val = IR.GetServer().Get("TagName");
+```
+**Только в серверном проекте (init.js).** Запись и чтение виртуальных тэгов сервера (Server Tags).
+Виртуальные тэги сервера доступны на чтение также через `IR.GetVariable("Server.Tags.TagName")`,
+НО запись — только через `IR.GetServer().Set()`.
 
 ### Доступ к тегам через path
 ```javascript
-// Upload mode
+// System Tokens
 var update = IR.GetVariable("System.Update");
 
-// Project token
+// Project Tokens (КУ/КОС)
 var myVar = IR.GetVariable("Global.MyVar");
 IR.SetVariable("Global.MyVar", 42);
+
+// Server virtual tags (только серверный проект)
+var t1 = IR.GetVariable("Server.Tags.sin1");  // чтение
+var t2 = IR.GetServer().Get("sin1");           // чтение (альтернатива)
+IR.GetServer().Set("sin1", 3.14);              // запись — ТОЛЬКО ТАК
 
 // Driver token
 var online = IR.GetVariable("Drivers.Modbus RTU.Line_1.Online");
 
-// GUI tag
+// GUI tag (только панельный проект)
 var text = IR.GetVariable("UI.Page 1.Item 1.Text");
 ```
 
@@ -281,19 +297,43 @@ IR.SoundVolume(slot, volume);  // 0.0 — 1.0
 При написании **серверного проекта (init.js)** на iRidi Server:
 
 - Тот же ES3 движок, те же ограничения
-- Доступны `IR.GetVariable` и `IR.SetVariable`
+- Доступны `IR.GetVariable` и `IR.SetVariable` (только для `Global.*`)
 - IR.SetInterval / IR.SetTimeout **работают**
 - GUI API **НЕ ДОСТУПЕН** — нет страниц, попапов, кнопок
 - `IR.Log()` работает в лог сервера
 - `require()`, `fs`, `http` из Node.js **НЕ ДОСТУПНЫ**
 - Таймер — единственный источник периодичности: `IR.SetInterval` или `EVENT_WORK+аккумулятор`
 
-### Типовой шаблон серверного скрипта
+### Виртуальные тэги сервера (Server.Tags)
+
+В серверном проекте виртуальные тэги создаются в разделе **Server Tags**,
+а не в Project Tokens. Для работы с ними используется другой API:
+
+| Операция | Код |
+|----------|-----|
+| Чтение | `IR.GetVariable("Server.Tags.TagName")` |
+| Запись | `IR.GetServer().Set("TagName", value)` |
+| Чтение (альт.) | `IR.GetServer().Get("TagName")` |
+
+**`IR.SetVariable("Server.Tags.TagName", value)` НЕ РАБОТАЕТ!**
+Для записи Server Tags только `IR.GetServer().Set()`.
+
+### Типовой шаблон серверного скрипта (с Server Tags)
+```javascript
+IR.AddListener(IR.EVENT_START, 0, function() {
+    IR.SetInterval(1000, function() {
+        var val = parseFloat(IR.GetVariable("Server.Tags.myTag")) || 0;
+        IR.GetServer().Set("myTag", val + 1);  // НЕ IR.SetVariable!
+    });
+});
+```
+
+### Типовой шаблон серверного скрипта (с Global Tokens)
 ```javascript
 IR.AddListener(IR.EVENT_START, 0, function() {
     IR.SetInterval(1000, function() {
         var val = parseFloat(IR.GetVariable("Global.myTag")) || 0;
-        IR.SetVariable("Global.myTag", val + 1);
+        IR.SetVariable("Global.myTag", val + 1);  // так можно
     });
 });
 ```

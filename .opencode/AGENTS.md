@@ -11,3 +11,4 @@
 - **НЕТ** `let`/`const` — используй `var`
 - **НЕТ** `JSON.parse`/`JSON.stringify` — передавай данные без JSON
 - **НЕТ** `console.log` — используй `IR.Log()`
+- **Для Server Tags: чтение через `IR.GetVariable("Server.Tags.*")`, запись ТОЛЬКО через `IR.GetServer().Set()`** (не `IR.SetVariable`)
