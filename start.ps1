@@ -5,4 +5,4 @@ Write-Host "Press Ctrl+C to stop" -ForegroundColor Yellow
 Write-Host ""
 
 $env:PYTHONIOENCODING = 'utf-8'
-python -m uvicorn web.main:app --host 0.0.0.0 --port 7987 --reload
+python -m web.main

@@ -6,6 +6,7 @@ from fastapi import FastAPI, Form, HTTPException
 from fastapi.responses import HTMLResponse, RedirectResponse
 
 from web.scraper import OmnideskScraper
+from web.config import OMNIDESK_API_KEY, OMNIDESK_EMAIL, OMNIDESK_PASSWORD, HOST, PORT
 from agent.recommender import generate as agent_generate
 
 from jinja2 import Environment, FileSystemLoader
@@ -28,7 +29,13 @@ _analysed_tickets: dict[int, dict] = {}
 def get_scraper() -> OmnideskScraper:
     global _scraper
     if _scraper is None:
-        _scraper = OmnideskScraper()
+        _scraper = OmnideskScraper(api_key=OMNIDESK_API_KEY)
+        # Автологин из .env если указаны email/пароль
+        if OMNIDESK_EMAIL and OMNIDESK_PASSWORD and not _scraper.session.logged_in:
+            try:
+                _scraper.login(OMNIDESK_EMAIL, OMNIDESK_PASSWORD)
+            except Exception:
+                pass
     return _scraper
 
 
@@ -190,4 +197,4 @@ async def shutdown():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=7987)
+    uvicorn.run(app, host=HOST, port=PORT)
