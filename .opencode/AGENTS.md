@@ -12,3 +12,4 @@
 - **НЕТ** `JSON.parse`/`JSON.stringify` — передавай данные без JSON
 - **НЕТ** `console.log` — используй `IR.Log()`
 - **Для Server Tags: чтение через `IR.GetVariable("Server.Tags.*")`, запись ТОЛЬКО через `IR.GetServer().Set()`** (не `IR.SetVariable`)
+- **🚨 НИКОГДА не используй `parseFloat(IR.GetVariable(...)) || default`** — когда токен равен `0`, `||` сбросит на default. Используй `isNaN()`. См. `knowledge_base/iridi_script_api.md` раздел про ловушки.
