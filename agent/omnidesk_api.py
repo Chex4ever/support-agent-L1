@@ -2,17 +2,12 @@
 Omnidesk API integration for the support agent.
 
 Documentation: https://docs.omnidesk.io/omnidesk
-
-Current state: stub for Phase 2.
-Actual integration requires API token and endpoint configuration.
 """
 
-import os
 from typing import Optional
 from dataclasses import dataclass
 
-OMNIDESK_API_BASE = os.getenv("OMNIDESK_API_BASE", "https://iridi.omnidesk.ru/api/v1")
-OMNIDESK_API_TOKEN = os.getenv("OMNIDESK_API_TOKEN", "")
+from web.config import OMNIDESK_API_KEY, OMNIDESK_API_BASE
 
 
 @dataclass
@@ -27,15 +22,19 @@ class Ticket:
     created_at: str
 
 
+def _api_url(path: str) -> str:
+    return f"{OMNIDESK_API_BASE}/api/v1{path}"
+
+
 def get_ticket(ticket_id: int) -> Optional[Ticket]:
-    if not OMNIDESK_API_TOKEN:
+    if not OMNIDESK_API_KEY:
         return None
 
     import requests
     try:
         resp = requests.get(
-            f"{OMNIDESK_API_BASE}/cases/{ticket_id}",
-            auth=(OMNIDESK_API_TOKEN, "X"),
+            _api_url(f"/cases/{ticket_id}"),
+            params={"apiKey": OMNIDESK_API_KEY},
             timeout=30,
         )
         resp.raise_for_status()
@@ -56,15 +55,15 @@ def get_ticket(ticket_id: int) -> Optional[Ticket]:
 
 
 def add_note(ticket_id: int, text: str) -> bool:
-    if not OMNIDESK_API_TOKEN:
+    if not OMNIDESK_API_KEY:
         print(f"[SIMULATED] Note for ticket #{ticket_id}:\n{text}\n---")
         return True
 
     import requests
     try:
         resp = requests.post(
-            f"{OMNIDESK_API_BASE}/cases/{ticket_id}/notes",
-            auth=(OMNIDESK_API_TOKEN, "X"),
+            _api_url(f"/cases/{ticket_id}/notes"),
+            params={"apiKey": OMNIDESK_API_KEY},
             json={"note": {"text": text}},
             timeout=30,
         )
@@ -76,15 +75,14 @@ def add_note(ticket_id: int, text: str) -> bool:
 
 
 def get_new_tickets(status: str = "new") -> list[Ticket]:
-    if not OMNIDESK_API_TOKEN:
+    if not OMNIDESK_API_KEY:
         return []
 
     import requests
     try:
         resp = requests.get(
-            f"{OMNIDESK_API_BASE}/cases",
-            auth=(OMNIDESK_API_TOKEN, "X"),
-            params={"status": status},
+            _api_url("/cases"),
+            params={"apiKey": OMNIDESK_API_KEY, "status": status},
             timeout=30,
         )
         resp.raise_for_status()
