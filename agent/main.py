@@ -1,8 +1,8 @@
 """
-iRidi Support Agent — первая линия техподдержки.
-
+iRidi Support Agent — ассистент второй линии техподдержки.
+ 
 Usage:
-    # CLI mode — анализировать текст из аргумента или stdin
+    # CLI mode
     python -m agent.main "Не работает iRidium transfer, не видит панель"
 
     # File mode
@@ -20,13 +20,13 @@ import json
 import argparse
 
 from agent.recommender import generate
-from agent.omnidesk_api import get_ticket, add_note
+from agent.omnidesk_api import get_ticket
 
 
 def format_recommendation(rec) -> str:
     lines = []
     lines.append("=" * 60)
-    lines.append("РЕКОМЕНДАЦИЯ АГЕНТА ПЕРВОЙ ЛИНИИ")
+    lines.append("РЕКОМЕНДАЦИЯ АГЕНТА ВТОРОЙ ЛИНИИ")
     lines.append("=" * 60)
     lines.append(f"Продукт:        {rec.product}")
     lines.append(f"Категория:      {rec.problem_category}")
