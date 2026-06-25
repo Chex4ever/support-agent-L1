@@ -13,6 +13,7 @@ def get(key: str, default: str = "") -> str:
 
 
 OMNIDESK_API_KEY = get("OMNIDESK_API_KEY")
+OMNIDESK_STAFF_EMAIL = get("OMNIDESK_STAFF_EMAIL")
 OMNIDESK_EMAIL = get("OMNIDESK_EMAIL")
 OMNIDESK_PASSWORD = get("OMNIDESK_PASSWORD")
 OMNIDESK_API_BASE = get("OMNIDESK_API_BASE", "https://iridi.omnidesk.ru")
