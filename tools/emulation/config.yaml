@@ -1,0 +1,16 @@
+# Default emulation stack config
+# Paths are resolved relative to the emulator dirs
+
+knx:
+  dir: C:\iridi\knx-e
+  web_port: 8001
+  udp_port: 3671
+
+mdb:
+  dir: C:\iridi\mdb-e
+  web_port: 7999
+  modbus_port: 502
+  config: register-init.yaml
+
+http_mock:
+  port: 8002

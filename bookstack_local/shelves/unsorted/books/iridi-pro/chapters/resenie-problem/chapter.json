@@ -1,0 +1,68 @@
+{
+  "id": 41,
+  "type": "chapter",
+  "name": "Решение проблем",
+  "slug": "resenie-problem",
+  "book_id": 17,
+  "priority": 4,
+  "created_at": "2026-05-05T07:00:45.000000Z",
+  "updated_at": "2026-05-05T07:00:45.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "iridi-pro",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Устранение проблем с веб-интерфейсом эмулятора (конфликт с Kaspersky)",
+      "id": 42,
+      "slug": "ustranenie-problem-s-veb-interfeisom-emuliatora-konflikt-s-kaspersky",
+      "book_id": 17,
+      "chapter_id": 41,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-05T07:00:48.000000Z",
+      "updated_at": "2026-05-05T07:00:48.000000Z",
+      "priority": 1,
+      "owned_by": 5,
+      "book_slug": "iridi-pro",
+      "created_by": 5,
+      "updated_by": 5,
+      "revision_count": 1,
+      "editor": "markdown"
+    },
+    {
+      "name": "Диагностика и устранение проблем с подключением к EU-инфраструктуре",
+      "id": 75,
+      "slug": "diagnostika-i-ustranenie-problem-s-podkliuceniem-k-eu-infrastrukture",
+      "book_id": 17,
+      "chapter_id": 41,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-15T08:32:25.000000Z",
+      "updated_at": "2026-06-02T05:45:00.000000Z",
+      "priority": 2,
+      "owned_by": 6,
+      "book_slug": "iridi-pro",
+      "created_by": 6,
+      "updated_by": 11,
+      "revision_count": 4,
+      "editor": "markdown"
+    }
+  ]
+}

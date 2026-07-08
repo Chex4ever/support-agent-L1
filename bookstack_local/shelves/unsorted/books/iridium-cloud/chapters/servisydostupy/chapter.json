@@ -1,0 +1,50 @@
+{
+  "id": 26,
+  "type": "chapter",
+  "name": "Сервисы/доступы",
+  "slug": "servisydostupy",
+  "book_id": 25,
+  "priority": 2,
+  "created_at": "2026-04-30T08:53:58.000000Z",
+  "updated_at": "2026-04-30T08:53:58.000000Z",
+  "created_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "updated_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "owned_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "description": "Статьи: Сервисы/доступы",
+  "description_html": "<p>Статьи: Сервисы/доступы</p>",
+  "default_template_id": null,
+  "book_slug": "iridium-cloud",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Перенос объектов и лицензий iRidi: полное руководство по управлению и смене владельца",
+      "id": 27,
+      "slug": "perenos-obieektov-i-licenzii-iridi-polnoe-rukovodstvo-po-upravleniiu-i-smene-vladelca",
+      "book_id": 25,
+      "chapter_id": 26,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-04-30T08:54:02.000000Z",
+      "updated_at": "2026-05-19T07:02:03.000000Z",
+      "priority": 1,
+      "owned_by": 3,
+      "book_slug": "iridium-cloud",
+      "created_by": 3,
+      "updated_by": 11,
+      "revision_count": 4,
+      "editor": "markdown"
+    }
+  ]
+}

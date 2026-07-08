@@ -1,0 +1,50 @@
+{
+  "id": 96,
+  "type": "chapter",
+  "name": "Функции BUS77",
+  "slug": "funkcii-bus77",
+  "book_id": 2,
+  "priority": 7,
+  "created_at": "2026-05-19T15:38:55.000000Z",
+  "updated_at": "2026-05-19T15:38:55.000000Z",
+  "created_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "updated_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "owned_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "bus77-home-server",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Настройка и работа функции анти-залипания (антистикинга) в BUS77",
+      "id": 97,
+      "slug": "nastroika-i-rabota-funkcii-anti-zalipaniia-antistikinga-v-bus77",
+      "book_id": 2,
+      "chapter_id": 96,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-19T15:39:01.000000Z",
+      "updated_at": "2026-05-19T15:39:11.000000Z",
+      "priority": 1,
+      "owned_by": 11,
+      "book_slug": "bus77-home-server",
+      "created_by": 11,
+      "updated_by": 11,
+      "revision_count": 1,
+      "editor": "markdown"
+    }
+  ]
+}

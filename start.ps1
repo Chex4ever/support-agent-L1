@@ -1,8 +1,16 @@
-# iRidi Support Agent — запуск веб-интерфейса
-Write-Host "=== iRidi Support Agent L1 ===" -ForegroundColor Cyan
-Write-Host "Web interface: http://localhost:7987" -ForegroundColor Green
+# iRidi Omnigent — запуск сервисов
+Write-Host "=== iRidi Omnigent ===" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "TicketDB API:    http://localhost:7987" -ForegroundColor Green
+Write-Host "TicketDB WebUI:  http://localhost:7988" -ForegroundColor Green
+Write-Host "L1 Agent WebUI:  http://localhost:7989" -ForegroundColor Green
+Write-Host ""
 Write-Host "Press Ctrl+C to stop" -ForegroundColor Yellow
 Write-Host ""
 
-$env:PYTHONIOENCODING = 'utf-8'
-python -m web.main
+$scriptPath = Join-Path $PSScriptRoot "tools\ticketdb\start_api.ps1"
+& $scriptPath
+
+# После остановки TicketDB
+Write-Host ""
+Write-Host "Servers stopped." -ForegroundColor Yellow

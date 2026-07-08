@@ -1,0 +1,7 @@
+{
+  "type": "chapter",
+  "name": "RAPIX (освещение)",
+  "slug": "rapix",
+  "book_id": 51,
+  "description": "Интеграция системы освещения RAPIX (DGCM протокол) в iRidi Studio: импорт EDE, кастомный AV&CS драйвер, BACnet vs Custom"
+}

@@ -1,0 +1,258 @@
+{% extends "base.html" %}
+{% block title %}BookStack — Omnigent{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">BookStack — База знаний</h2>
+
+<div class="row mb-3">
+    <div class="col">
+        <button class="btn btn-primary btn-sm" onclick="syncAction('pull')">Pull all</button>
+        <button class="btn btn-warning btn-sm" onclick="syncAction('push')">Push all</button>
+        <button class="btn btn-info btn-sm" onclick="syncAction('status')">Status</button>
+        <button class="btn btn-outline-secondary btn-sm" onclick="refreshSyncStatus()">Refresh sync status</button>
+        <span id="sync-result" class="ms-3"></span>
+    </div>
+    <div class="col text-end">
+        <a href="http://bookstack.mytunnel.org" target="_blank" class="btn btn-outline-dark btn-sm">Open BookStack &rarr;</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header"><strong>Shelves / Books</strong></div>
+            <div class="card-body p-0">
+                <div class="list-group list-group-flush" style="max-height: 80vh; overflow-y: auto;" id="tree-nav">
+                    {% for shelf in shelves %}
+                    <div class="list-group-item p-2">
+                        <strong class="text-danger small">📚 {{ shelf.name }}</strong>
+                        {% for book in shelf.books %}
+                        <div class="ms-3 mt-1">
+                            <strong class="small" data-bs-toggle="collapse" href="#book-{{ book.slug }}" role="button" aria-expanded="false">
+                                📖 {{ book.name }}
+                            </strong>
+                            <div class="collapse ms-3" id="book-{{ book.slug }}">
+                                {% for ch in book.chapters %}
+                                <div class="mt-1">
+                                    <span class="small text-secondary" data-bs-toggle="collapse" href="#ch-{{ book.slug }}-{{ ch.slug }}" role="button" aria-expanded="false">
+                                        📂 {{ ch.name }}
+                                    </span>
+                                    <div class="collapse ms-3" id="ch-{{ book.slug }}-{{ ch.slug }}">
+                                        {% for p in ch.pages %}
+                                        <div class="small py-1 d-flex align-items-center">
+                                            <a href="#" class="page-link flex-grow-1" data-path="{{ p.path }}">📄 {{ p.name }}</a>
+                                            <span class="sync-badge ms-1" data-path="{{ p.path }}">
+                                                {% if p.sync_status == 'local_only' %}
+                                                <span class="badge bg-warning text-dark" title="Only local">local</span>
+                                                {% elif p.sync_status == 'remote_exists' %}
+                                                <span class="badge bg-success" title="Exists on cloud">cloud</span>
+                                                {% else %}
+                                                <span class="badge bg-secondary" title="Unknown">?</span>
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% for p in book.pages %}
+                                <div class="small py-1 ms-2 d-flex align-items-center">
+                                    <a href="#" class="page-link flex-grow-1" data-path="{{ p.path }}">📄 {{ p.name }}</a>
+                                    <span class="sync-badge ms-1" data-path="{{ p.path }}">
+                                        {% if p.sync_status == 'local_only' %}
+                                        <span class="badge bg-warning text-dark" title="Only local">local</span>
+                                        {% elif p.sync_status == 'remote_exists' %}
+                                        <span class="badge bg-success" title="Exists on cloud">cloud</span>
+                                        {% else %}
+                                        <span class="badge bg-secondary" title="Unknown">?</span>
+                                        {% endif %}
+                                    </span>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span id="page-title">Select a page</span>
+                <div id="page-actions" style="display:none">
+                    <span id="sync-detail-status" class="me-2"></span>
+                    <button id="btn-push" class="btn btn-sm btn-warning" onclick="pushPage()" title="Push to BookStack cloud">Push to cloud</button>
+                    <button id="btn-pull" class="btn btn-sm btn-primary" onclick="pullPage()" title="Pull from BookStack cloud">Pull from cloud</button>
+                    <a id="edit-link" href="#" target="_blank" class="btn btn-sm btn-outline-secondary ms-1">Open in BookStack</a>
+                </div>
+            </div>
+            <div class="card-body" id="page-content" style="min-height: 60vh;">
+                <p class="text-muted">Select a page from the tree to view its content.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentPagePath = null;
+
+async function syncAction(action) {
+    const el = document.getElementById('sync-result');
+    el.innerHTML = '<span class="text-info">Running...</span>';
+    try {
+        const resp = await fetch(`/bookstack/${action}`, { method: 'POST' });
+        const text = await resp.text();
+        el.innerHTML = `<span class="text-success">${text.replace(/\n/g, '<br>')}</span>`;
+        if (action === 'pull' || action === 'push') {
+            setTimeout(() => location.reload(), 1500);
+        }
+    } catch(e) {
+        el.innerHTML = `<span class="text-danger">Error: ${e.message}</span>`;
+    }
+}
+
+async function refreshSyncStatus() {
+    const el = document.getElementById('sync-result');
+    el.innerHTML = '<span class="text-info">Refreshing...</span>';
+    try {
+        const resp = await fetch('/bookstack/page/status?path=' + encodeURIComponent('__dummy__'));
+        // This refreshes the cache by side effect; then reload
+        location.reload();
+    } catch(e) {
+        el.innerHTML = `<span class="text-danger">Error: ${e.message}</span>`;
+    }
+}
+
+async function checkPageStatus(path) {
+    try {
+        const resp = await fetch(`/bookstack/page/status?path=${encodeURIComponent(path)}`);
+        if (!resp.ok) return null;
+        return await resp.json();
+    } catch(e) {
+        return null;
+    }
+}
+
+async function pushPage() {
+    if (!currentPagePath) return;
+    const el = document.getElementById('sync-result');
+    el.innerHTML = '<span class="text-info">Pushing...</span>';
+    try {
+        const resp = await fetch(`/bookstack/page/push?path=${encodeURIComponent(currentPagePath)}`, { method: 'POST' });
+        const text = await resp.text();
+        el.innerHTML = `<span class="text-success">${text}</span>`;
+        // Refresh status
+        const status = await checkPageStatus(currentPagePath);
+        updateSyncUI(status);
+        // Refresh tree badges
+        updateTreeBadge(currentPagePath, status);
+    } catch(e) {
+        el.innerHTML = `<span class="text-danger">Error: ${e.message}</span>`;
+    }
+}
+
+async function pullPage() {
+    if (!currentPagePath) return;
+    const el = document.getElementById('sync-result');
+    el.innerHTML = '<span class="text-info">Pulling...</span>';
+    try {
+        const resp = await fetch(`/bookstack/page/pull?path=${encodeURIComponent(currentPagePath)}`, { method: 'POST' });
+        const text = await resp.text();
+        el.innerHTML = `<span class="text-success">${text}</span>`;
+        // Reload page content
+        const pageResp = await fetch(`/bookstack/page?path=${encodeURIComponent(currentPagePath)}`);
+        if (pageResp.ok) {
+            const data = await pageResp.json();
+            document.getElementById('page-content').innerHTML = data.html;
+        }
+        const status = await checkPageStatus(currentPagePath);
+        updateSyncUI(status);
+        updateTreeBadge(currentPagePath, status);
+    } catch(e) {
+        el.innerHTML = `<span class="text-danger">Error: ${e.message}</span>`;
+    }
+}
+
+function updateSyncUI(status) {
+    const detailEl = document.getElementById('sync-detail-status');
+    if (!status) {
+        detailEl.innerHTML = '<span class="badge bg-secondary">unknown</span>';
+        return;
+    }
+    let badge = '';
+    switch(status.status) {
+        case 'local_only':
+            badge = '<span class="badge bg-warning text-dark">local only</span>';
+            document.getElementById('btn-push').style.display = 'inline-block';
+            document.getElementById('btn-pull').style.display = 'none';
+            break;
+        case 'synced':
+            badge = '<span class="badge bg-success">synced</span>';
+            document.getElementById('btn-push').style.display = 'none';
+            document.getElementById('btn-pull').style.display = 'none';
+            break;
+        case 'local_newer':
+            badge = '<span class="badge bg-warning text-dark">local newer</span>';
+            document.getElementById('btn-push').style.display = 'inline-block';
+            document.getElementById('btn-pull').style.display = 'none';
+            break;
+        case 'remote_unreachable':
+            badge = '<span class="badge bg-danger">remote unreachable</span>';
+            document.getElementById('btn-push').style.display = 'none';
+            document.getElementById('btn-pull').style.display = 'none';
+            break;
+        default:
+            badge = '<span class="badge bg-secondary">?</span>';
+    }
+    detailEl.innerHTML = badge;
+}
+
+function updateTreeBadge(path, status) {
+    const badges = document.querySelectorAll(`.sync-badge[data-path="${path}"]`);
+    badges.forEach(badge => {
+        if (!status || !status.remote_exists) {
+            badge.innerHTML = '<span class="badge bg-warning text-dark">local</span>';
+        } else {
+            badge.innerHTML = '<span class="badge bg-success">cloud</span>';
+        }
+    });
+}
+
+document.querySelectorAll('.page-link').forEach(el => {
+    el.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const path = el.dataset.path;
+        currentPagePath = path;
+        document.getElementById('page-title').textContent = el.textContent.trim();
+        document.getElementById('page-content').innerHTML = '<span class="text-muted">Loading...</span>';
+
+        const actionsEl = document.getElementById('page-actions');
+        actionsEl.style.display = 'none';
+        const editUrl = document.getElementById('edit-link');
+        editUrl.style.display = 'none';
+
+        try {
+            const resp = await fetch(`/bookstack/page?path=${encodeURIComponent(path)}`);
+            if (!resp.ok) throw new Error('Not found');
+            const data = await resp.json();
+            document.getElementById('page-content').innerHTML = data.html;
+            if (data.bookstack_url) {
+                editUrl.href = data.bookstack_url;
+                editUrl.style.display = 'inline-block';
+            }
+
+            // Check sync status
+            const status = await checkPageStatus(path);
+            updateSyncUI(status);
+            actionsEl.style.display = 'flex';
+            actionsEl.style.alignItems = 'center';
+        } catch(e) {
+            document.getElementById('page-content').innerHTML = `<span class="text-danger">${e.message}</span>`;
+        }
+    });
+});
+</script>
+{% endblock %}

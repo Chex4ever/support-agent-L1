@@ -1,0 +1,50 @@
+{
+  "id": 18,
+  "type": "chapter",
+  "name": "Интеграция с KNX",
+  "slug": "integraciia-s-knx",
+  "book_id": 17,
+  "priority": 2,
+  "created_at": "2026-04-29T16:42:39.000000Z",
+  "updated_at": "2026-04-29T16:42:39.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "iridi-pro",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Особенности импорта проектов ETS6 с установленным паролем",
+      "id": 19,
+      "slug": "osobennosti-importa-proektov-ets6-s-ustanovlennym-parolem",
+      "book_id": 17,
+      "chapter_id": 18,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-04-29T16:42:41.000000Z",
+      "updated_at": "2026-04-29T16:42:42.000000Z",
+      "priority": 1,
+      "owned_by": 5,
+      "book_slug": "iridi-pro",
+      "created_by": 5,
+      "updated_by": 5,
+      "revision_count": 1,
+      "editor": "markdown"
+    }
+  ]
+}
