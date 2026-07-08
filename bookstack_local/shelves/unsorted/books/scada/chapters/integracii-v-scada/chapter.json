@@ -1,0 +1,50 @@
+{
+  "id": 77,
+  "type": "chapter",
+  "name": "Интеграции в SCADA",
+  "slug": "integracii-v-scada",
+  "book_id": 76,
+  "priority": 2,
+  "created_at": "2026-05-15T10:02:53.000000Z",
+  "updated_at": "2026-05-15T10:02:53.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "scada",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Интеграция iRidi Pro Server с iRidi SCADA Server",
+      "id": 78,
+      "slug": "integraciia-iridi-pro-server-s-iridi-scada-server",
+      "book_id": 76,
+      "chapter_id": 77,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-15T10:02:56.000000Z",
+      "updated_at": "2026-05-18T14:45:25.000000Z",
+      "priority": 1,
+      "owned_by": 5,
+      "book_slug": "scada",
+      "created_by": 5,
+      "updated_by": 11,
+      "revision_count": 3,
+      "editor": "markdown"
+    }
+  ]
+}

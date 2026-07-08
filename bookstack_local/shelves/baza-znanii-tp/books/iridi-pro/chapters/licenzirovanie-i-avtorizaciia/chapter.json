@@ -1,0 +1,50 @@
+{
+  "id": 101,
+  "type": "chapter",
+  "name": "Лицензирование и авторизация",
+  "slug": "licenzirovanie-i-avtorizaciia",
+  "book_id": 17,
+  "priority": 10,
+  "created_at": "2026-05-28T03:19:55.000000Z",
+  "updated_at": "2026-05-28T03:19:55.000000Z",
+  "created_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "updated_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "owned_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "iridi-pro",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Тестирование и запуск проектов iRidi Pro в условиях отсутствия интернет-соединения",
+      "id": 102,
+      "slug": "testirovanie-i-zapusk-proektov-iridi-pro-v-usloviiax-otsutstviia-internet-soedineniia",
+      "book_id": 17,
+      "chapter_id": 101,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-28T03:20:00.000000Z",
+      "updated_at": "2026-05-28T03:24:01.000000Z",
+      "priority": 1,
+      "owned_by": 11,
+      "book_slug": "iridi-pro",
+      "created_by": 11,
+      "updated_by": 6,
+      "revision_count": 2,
+      "editor": "markdown"
+    }
+  ]
+}

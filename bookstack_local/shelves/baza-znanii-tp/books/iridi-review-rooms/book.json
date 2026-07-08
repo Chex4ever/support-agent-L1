@@ -1,0 +1,37 @@
+{
+  "id": 14,
+  "type": "book",
+  "name": "iRidi ReView Rooms",
+  "slug": "iridi-review-rooms",
+  "created_at": "2026-04-29T16:22:34.000000Z",
+  "updated_at": "2026-04-29T16:22:34.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "image_id": null,
+  "sort_rule_id": null,
+  "cover": null,
+  "tags": [],
+  "shelves": [
+    {
+      "id": 1,
+      "name": "База знаний ТП",
+      "slug": "baza-znanii-tp"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": 70,
+  "type": "chapter",
+  "name": "Сервисы и доступы",
+  "slug": "servisy-i-dostupy",
+  "book_id": 17,
+  "priority": 2,
+  "created_at": "2026-05-15T04:37:12.000000Z",
+  "updated_at": "2026-05-15T10:56:55.000000Z",
+  "created_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "updated_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "owned_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "description": "Статьи: Сервисы и доступы",
+  "description_html": "<p>Статьи: Сервисы и доступы</p>",
+  "default_template_id": null,
+  "book_slug": "iridi-pro",
+  "tags": [],
+  "pages": [
+    {
+      "name": "ЗапросНаУточнение: Лицензирование»:Активация / Привязка",
+      "id": 71,
+      "slug": "zaprosnautocnenie-licenzirovanieaktivaciia-priviazka",
+      "book_id": 17,
+      "chapter_id": 70,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-15T04:37:17.000000Z",
+      "updated_at": "2026-05-15T10:58:13.000000Z",
+      "priority": 1,
+      "owned_by": 3,
+      "book_slug": "iridi-pro",
+      "created_by": 3,
+      "updated_by": 5,
+      "revision_count": 6,
+      "editor": "markdown"
+    }
+  ]
+}

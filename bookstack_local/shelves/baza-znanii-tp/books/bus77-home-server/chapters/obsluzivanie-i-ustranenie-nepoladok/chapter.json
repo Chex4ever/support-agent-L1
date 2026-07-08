@@ -1,0 +1,50 @@
+{
+  "id": 64,
+  "type": "chapter",
+  "name": "Обслуживание и устранение неполадок",
+  "slug": "obsluzivanie-i-ustranenie-nepoladok",
+  "book_id": 2,
+  "priority": 5,
+  "created_at": "2026-05-14T02:42:42.000000Z",
+  "updated_at": "2026-05-14T02:42:42.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "bus77-home-server",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Устранение дубликатов глобальных переменных в проекте iRidi Pro",
+      "id": 65,
+      "slug": "ustranenie-dublikatov-globalnyx-peremennyx-v-proekte-iridi-pro",
+      "book_id": 2,
+      "chapter_id": 64,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-14T02:42:45.000000Z",
+      "updated_at": "2026-05-29T03:16:25.000000Z",
+      "priority": 1,
+      "owned_by": 5,
+      "book_slug": "bus77-home-server",
+      "created_by": 5,
+      "updated_by": 11,
+      "revision_count": 2,
+      "editor": "markdown"
+    }
+  ]
+}

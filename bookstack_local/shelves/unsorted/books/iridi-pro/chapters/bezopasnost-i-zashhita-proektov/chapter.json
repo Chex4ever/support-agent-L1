@@ -1,0 +1,50 @@
+{
+  "id": 79,
+  "type": "chapter",
+  "name": "Безопасность и защита проектов",
+  "slug": "bezopasnost-i-zashhita-proektov",
+  "book_id": 17,
+  "priority": 8,
+  "created_at": "2026-05-15T11:27:24.000000Z",
+  "updated_at": "2026-05-15T11:27:24.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "iridi-pro",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Защита интеллектуальной собственности и ограничение доступа в iRidi Pro",
+      "id": 80,
+      "slug": "zashhita-intellektualnoi-sobstvennosti-i-ogranicenie-dostupa-v-iridi-pro",
+      "book_id": 17,
+      "chapter_id": 79,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-15T11:27:29.000000Z",
+      "updated_at": "2026-05-15T11:27:42.000000Z",
+      "priority": 1,
+      "owned_by": 5,
+      "book_slug": "iridi-pro",
+      "created_by": 5,
+      "updated_by": 5,
+      "revision_count": 1,
+      "editor": "markdown"
+    }
+  ]
+}

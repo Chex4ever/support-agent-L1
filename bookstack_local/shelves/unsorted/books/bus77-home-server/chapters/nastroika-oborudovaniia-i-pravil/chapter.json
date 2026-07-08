@@ -1,0 +1,50 @@
+{
+  "id": 98,
+  "type": "chapter",
+  "name": "Настройка оборудования и правил",
+  "slug": "nastroika-oborudovaniia-i-pravil",
+  "book_id": 2,
+  "priority": 8,
+  "created_at": "2026-05-25T09:24:53.000000Z",
+  "updated_at": "2026-05-25T09:24:53.000000Z",
+  "created_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "updated_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "owned_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "bus77-home-server",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Ложные уведомления и работа функции анти-залипания (Antisticking) в Bus77 Lite",
+      "id": 99,
+      "slug": "loznye-uvedomleniia-i-rabota-funkcii-anti-zalipaniia-antisticking-v-bus77-lite",
+      "book_id": 2,
+      "chapter_id": 98,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-25T09:24:59.000000Z",
+      "updated_at": "2026-05-25T09:59:39.000000Z",
+      "priority": 1,
+      "owned_by": 11,
+      "book_slug": "bus77-home-server",
+      "created_by": 11,
+      "updated_by": 5,
+      "revision_count": 2,
+      "editor": "markdown"
+    }
+  ]
+}

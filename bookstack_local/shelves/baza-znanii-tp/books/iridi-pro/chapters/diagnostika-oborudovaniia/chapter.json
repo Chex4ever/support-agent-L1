@@ -1,0 +1,50 @@
+{
+  "id": 103,
+  "type": "chapter",
+  "name": "Диагностика оборудования",
+  "slug": "diagnostika-oborudovaniia",
+  "book_id": 17,
+  "priority": 11,
+  "created_at": "2026-05-28T07:00:50.000000Z",
+  "updated_at": "2026-05-28T07:00:50.000000Z",
+  "created_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "updated_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "owned_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "iridi-pro",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Диагностика и решение ошибки «Ошибка внутреннего счетчика» на FM-402-1W после обновления прошивки",
+      "id": 104,
+      "slug": "diagnostika-i-resenie-osibki-osibka-vnutrennego-scetcika-na-fm-402-1w-posle-obnovleniia-prosivki",
+      "book_id": 17,
+      "chapter_id": 103,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-28T07:00:53.000000Z",
+      "updated_at": "2026-05-28T07:00:54.000000Z",
+      "priority": 1,
+      "owned_by": 11,
+      "book_slug": "iridi-pro",
+      "created_by": 11,
+      "updated_by": 11,
+      "revision_count": 1,
+      "editor": "markdown"
+    }
+  ]
+}

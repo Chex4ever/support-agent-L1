@@ -1,0 +1,28 @@
+{
+  "id": 146,
+  "type": "bookshelf",
+  "name": "Активы",
+  "slug": "aktivy",
+  "created_at": "2026-07-03T06:27:56.000000Z",
+  "updated_at": "2026-07-03T06:27:56.000000Z",
+  "created_by": {
+    "id": 1,
+    "name": "Admin",
+    "slug": "admin"
+  },
+  "updated_by": {
+    "id": 1,
+    "name": "Admin",
+    "slug": "admin"
+  },
+  "owned_by": {
+    "id": 1,
+    "name": "Admin",
+    "slug": "admin"
+  },
+  "description": "",
+  "description_html": "<p></p>",
+  "cover": null,
+  "tags": [],
+  "books": []
+}

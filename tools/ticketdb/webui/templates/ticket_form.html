@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}{% if ticket %}Edit {{ ticket.ticket_id }}{% else %}New Ticket{% endif %} — Omnigent{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/tickets">Tickets</a></li>
+        {% if ticket %}
+        <li class="breadcrumb-item"><a href="/tickets/{{ ticket.ticket_id }}">{{ ticket.ticket_id }}</a></li>
+        <li class="breadcrumb-item active">Edit</li>
+        {% else %}
+        <li class="breadcrumb-item active">New</li>
+        {% endif %}
+    </ol>
+</nav>
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="mb-0">{% if ticket %}Edit Ticket {{ ticket.ticket_id }}{% else %}New Ticket{% endif %}</h4>
+    </div>
+    <div class="card-body">
+        {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+
+        <form method="post" action="{% if ticket %}/tickets/{{ ticket.ticket_id }}/edit{% else %}/tickets/new{% endif %}">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label">Ticket ID</label>
+                    <input type="text" name="ticket_id" class="form-control" value="{{ ticket.ticket_id if ticket else '' }}" {% if ticket %}readonly{% endif %} required />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Status</label>
+                    <select name="status" class="form-select">
+                        {% for s in ['pending','in_progress','completed','blocked','cancelled'] %}
+                        <option value="{{ s }}" {% if ticket and ticket.status == s %}selected{% endif %}>{{ s }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Priority</label>
+                    <select name="priority" class="form-select">
+                        {% for p in ['low','medium','high'] %}
+                        <option value="{{ p }}" {% if ticket and ticket.priority == p %}selected{% endif %}>{{ p }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Product</label>
+                    <input type="text" name="product" class="form-control" value="{{ ticket.product if ticket else '' }}" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Client Name</label>
+                    <input type="text" name="client_name" class="form-control" value="{{ ticket.client_name if ticket else '' }}" />
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Summary</label>
+                    <input type="text" name="summary" class="form-control" value="{{ ticket.summary if ticket else '' }}" />
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Client Question</label>
+                    <textarea name="client_question" class="form-control" rows="3">{{ ticket.client_question if ticket else '' }}</textarea>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Research Summary</label>
+                    <textarea name="research_summary" class="form-control" rows="4">{{ ticket.research_summary if ticket else '' }}</textarea>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Reply Draft Path</label>
+                    <input type="text" name="reply_draft_path" class="form-control" value="{{ ticket.reply_draft_path if ticket else '' }}" />
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Reply Sent</label>
+                    <select name="reply_sent" class="form-select">
+                        <option value="0" {% if ticket and ticket.reply_sent == 0 %}selected{% endif %}>No</option>
+                        <option value="1" {% if ticket and ticket.reply_sent == 1 %}selected{% endif %}>Yes</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Notes</label>
+                    <textarea name="notes" class="form-control" rows="3">{{ ticket.notes if ticket else '' }}</textarea>
+                </div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">
+                    {% if ticket %}Update Ticket{% else %}Create Ticket{% endif %}
+                </button>
+                <a href="{% if ticket %}/tickets/{{ ticket.ticket_id }}{% else %}/tickets{% endif %}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

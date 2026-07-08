@@ -1,0 +1,50 @@
+{
+  "id": 60,
+  "type": "chapter",
+  "name": "Отладка и логирование",
+  "slug": "otladka-i-logirovanie",
+  "book_id": 17,
+  "priority": 7,
+  "created_at": "2026-05-12T03:35:55.000000Z",
+  "updated_at": "2026-05-12T03:35:55.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "iridi-pro",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Отладка и логирование в i3pro",
+      "id": 61,
+      "slug": "otladka-i-logirovanie-v-i3pro",
+      "book_id": 17,
+      "chapter_id": 60,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-12T03:35:59.000000Z",
+      "updated_at": "2026-05-12T03:36:00.000000Z",
+      "priority": 1,
+      "owned_by": 5,
+      "book_slug": "iridi-pro",
+      "created_by": 5,
+      "updated_by": 5,
+      "revision_count": 1,
+      "editor": "markdown"
+    }
+  ]
+}

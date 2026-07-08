@@ -1,0 +1,50 @@
+{
+  "id": 62,
+  "type": "chapter",
+  "name": "Замена оборудования",
+  "slug": "zamena-oborudovaniia",
+  "book_id": 2,
+  "priority": 4,
+  "created_at": "2026-05-14T02:33:20.000000Z",
+  "updated_at": "2026-05-14T02:33:20.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "bus77-home-server",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Инструкция по замене неисправного шлюза IS-CAN",
+      "id": 63,
+      "slug": "instrukciia-po-zamene-neispravnogo-sliuza-is-can",
+      "book_id": 2,
+      "chapter_id": 62,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-14T02:33:37.000000Z",
+      "updated_at": "2026-05-14T02:33:57.000000Z",
+      "priority": 1,
+      "owned_by": 5,
+      "book_slug": "bus77-home-server",
+      "created_by": 5,
+      "updated_by": 5,
+      "revision_count": 1,
+      "editor": "markdown"
+    }
+  ]
+}
