@@ -1,0 +1,68 @@
+{
+  "id": 43,
+  "type": "chapter",
+  "name": "Интерфейсные элементы и обратная связь",
+  "slug": "interfeisnye-elementy-i-obratnaia-sviaz",
+  "book_id": 17,
+  "priority": 5,
+  "created_at": "2026-05-07T16:03:29.000000Z",
+  "updated_at": "2026-05-07T16:03:29.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "iridi-pro",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Устранение мерцания элемента Level при задержках обратной связи",
+      "id": 44,
+      "slug": "ustranenie-mercaniia-elementa-level-pri-zaderzkax-obratnoi-sviazi",
+      "book_id": 17,
+      "chapter_id": 43,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-07T16:03:41.000000Z",
+      "updated_at": "2026-05-07T16:03:51.000000Z",
+      "priority": 1,
+      "owned_by": 5,
+      "book_slug": "iridi-pro",
+      "created_by": 5,
+      "updated_by": 5,
+      "revision_count": 1,
+      "editor": "markdown"
+    },
+    {
+      "name": "Расширенное руководство по Static List: управление, навигация и кастомная анимация",
+      "id": 83,
+      "slug": "rassirennoe-rukovodstvo-po-static-list-upravlenie-navigaciia-i-kastomnaia-animaciia",
+      "book_id": 17,
+      "chapter_id": 43,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-15T14:44:05.000000Z",
+      "updated_at": "2026-05-19T04:12:34.000000Z",
+      "priority": 1,
+      "owned_by": 11,
+      "book_slug": "iridi-pro",
+      "created_by": 11,
+      "updated_by": 11,
+      "revision_count": 2,
+      "editor": "markdown"
+    }
+  ]
+}

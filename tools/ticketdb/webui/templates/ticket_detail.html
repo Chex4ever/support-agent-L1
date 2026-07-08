@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}{{ t.ticket_id }} — Omnigent{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/tickets">Tickets</a></li>
+        <li class="breadcrumb-item active">{{ t.ticket_id }}</li>
+    </ol>
+</nav>
+
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+            <h4 class="mb-0 d-inline">{{ t.ticket_id }}</h4>
+            <span class="badge bg-{{ 'success' if t.status == 'completed' else 'warning' if t.status == 'in_progress' else 'secondary' if t.status == 'pending' else 'danger' if t.status == 'blocked' else 'light text-dark' }} ms-2">{{ t.status }}</span>
+            <span class="badge bg-{{ 'danger' if t.priority == 'high' else 'warning' if t.priority == 'medium' else 'secondary' }} ms-1">{{ t.priority }}</span>
+        </div>
+        <div>
+            <a href="/tickets/{{ t.ticket_id }}/edit" class="btn btn-sm btn-outline-primary">Edit</a>
+            <form method="post" action="/tickets/{{ t.ticket_id }}/delete" style="display:inline" onsubmit="return confirm('Delete ticket {{ t.ticket_id }}?')">
+                <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4 text-muted small">Product</dt>
+                    <dd class="col-sm-8">{{ t.product or '—' }}</dd>
+                    <dt class="col-sm-4 text-muted small">Client</dt>
+                    <dd class="col-sm-8">{{ t.client_name or '—' }}</dd>
+                    <dt class="col-sm-4 text-muted small">Reply Sent</dt>
+                    <dd class="col-sm-8">{{ 'Yes' if t.reply_sent else 'No' }}</dd>
+                </dl>
+            </div>
+            <div class="col-md-6">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4 text-muted small">Created</dt>
+                    <dd class="col-sm-8">{{ t.created_at }}</dd>
+                    <dt class="col-sm-4 text-muted small">Updated</dt>
+                    <dd class="col-sm-8">{{ t.updated_at }}</dd>
+                    <dt class="col-sm-4 text-muted small">Reply Draft</dt>
+                    <dd class="col-sm-8">{{ t.reply_draft_path or '—' }}</dd>
+                </dl>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="mb-3">
+            <h6>Summary</h6>
+            <p class="mb-0">{{ t.summary or '—' }}</p>
+        </div>
+
+        <div class="mb-3">
+            <h6>Client Question</h6>
+            <div class="kb-value-mono">{{ t.client_question or '—' }}</div>
+        </div>
+
+        <div class="mb-3">
+            <h6>Research Summary</h6>
+            <div class="kb-value-mono">{{ t.research_summary or '—' }}</div>
+        </div>
+
+        <div class="mb-3">
+            <h6>Notes</h6>
+            <div class="kb-value-mono">{{ t.notes or '—' }}</div>
+        </div>
+
+        <div>
+            <h6>Related Files</h6>
+            {% if t.related_files %}
+            <ul class="files-list mb-0">
+                {% for f in t.related_files %}
+                <li><code>{{ f }}</code></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="text-muted small mb-0">None</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<a href="/tickets" class="btn btn-outline-secondary">&larr; Back to Tickets</a>
+{% endblock %}

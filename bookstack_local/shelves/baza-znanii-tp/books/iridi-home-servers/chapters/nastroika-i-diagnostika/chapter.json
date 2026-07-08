@@ -1,0 +1,50 @@
+{
+  "id": 45,
+  "type": "chapter",
+  "name": "Настройка и диагностика",
+  "slug": "nastroika-i-diagnostika",
+  "book_id": 20,
+  "priority": 4,
+  "created_at": "2026-05-07T16:16:12.000000Z",
+  "updated_at": "2026-05-07T16:16:12.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "iridi-home-servers",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Синхронизация системного времени и часовых поясов на серверах iRidi",
+      "id": 46,
+      "slug": "sinxronizaciia-sistemnogo-vremeni-i-casovyx-poiasov-na-serverax-iridi",
+      "book_id": 20,
+      "chapter_id": 45,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-07T16:16:16.000000Z",
+      "updated_at": "2026-05-07T16:18:09.000000Z",
+      "priority": 1,
+      "owned_by": 5,
+      "book_slug": "iridi-home-servers",
+      "created_by": 5,
+      "updated_by": 5,
+      "revision_count": 2,
+      "editor": "markdown"
+    }
+  ]
+}

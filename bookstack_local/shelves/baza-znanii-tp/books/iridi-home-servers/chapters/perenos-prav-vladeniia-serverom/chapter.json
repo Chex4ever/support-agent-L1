@@ -1,0 +1,50 @@
+{
+  "id": 54,
+  "type": "chapter",
+  "name": "Перенос прав владения сервером",
+  "slug": "perenos-prav-vladeniia-serverom",
+  "book_id": 20,
+  "priority": 5,
+  "created_at": "2026-05-11T13:54:57.000000Z",
+  "updated_at": "2026-05-11T13:54:57.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "iridi-home-servers",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Перенос прав владения на iRidi Home Server",
+      "id": 55,
+      "slug": "perenos-prav-vladeniia-na-iridi-home-server",
+      "book_id": 20,
+      "chapter_id": 54,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-11T13:55:01.000000Z",
+      "updated_at": "2026-05-11T13:55:02.000000Z",
+      "priority": 1,
+      "owned_by": 5,
+      "book_slug": "iridi-home-servers",
+      "created_by": 5,
+      "updated_by": 5,
+      "revision_count": 1,
+      "editor": "markdown"
+    }
+  ]
+}

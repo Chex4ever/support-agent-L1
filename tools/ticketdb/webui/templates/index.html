@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — Omnigent{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Dashboard</h2>
+
+<div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+        <div class="stat-card text-center">
+            <div class="number">{{ stats.total }}</div>
+            <div class="label">Total Tickets</div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="stat-card text-center">
+            <div class="number text-warning">{{ stats.in_progress }}</div>
+            <div class="label">In Progress</div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="stat-card text-center">
+            <div class="number text-success">{{ stats.completed }}</div>
+            <div class="label">Completed</div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="stat-card text-center">
+            <div class="number text-info">{{ stats.kb }}</div>
+            <div class="label">KB Entries</div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+        <div class="stat-card text-center">
+            <div class="number text-secondary">{{ stats.pending }}</div>
+            <div class="label">Pending</div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="stat-card text-center">
+            <div class="number text-danger">{{ stats.blocked }}</div>
+            <div class="label">Blocked</div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="stat-card text-center">
+            <div class="number text-muted">{{ stats.cancelled }}</div>
+            <div class="label">Cancelled</div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="stat-card text-center">
+            <div class="number text-primary">{{ stats.products }}</div>
+            <div class="label">Products</div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Recent Tickets</span>
+        <a href="/tickets" class="btn btn-sm btn-outline-primary">All Tickets &rarr;</a>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Product</th>
+                    <th>Summary</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in recent %}
+                <tr onclick="window.location='/tickets/{{ t.ticket_id }}'" style="cursor:pointer">
+                    <td><code>{{ t.ticket_id }}</code></td>
+                    <td><span class="badge bg-{{ 'success' if t.status == 'completed' else 'warning' if t.status == 'in_progress' else 'secondary' if t.status == 'pending' else 'danger' if t.status == 'blocked' else 'light text-dark' }} bg-status">{{ t.status }}</span></td>
+                    <td><span class="badge bg-{{ 'danger' if t.priority == 'high' else 'warning' if t.priority == 'medium' else 'secondary' }} priority">{{ t.priority }}</span></td>
+                    <td>{{ t.product or '—' }}</td>
+                    <td>{{ t.summary[:60] }}{% if t.summary|length > 60 %}&hellip;{% endif %}</td>
+                </tr>
+                {% endfor %}
+                {% if not recent %}
+                <tr><td colspan="5" class="text-muted text-center py-3">No tickets yet.</td></tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

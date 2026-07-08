@@ -1,0 +1,31 @@
+{
+  "id": 56,
+  "type": "chapter",
+  "name": "Устранение проблем с облачным соединением",
+  "slug": "ustranenie-problem-s-oblacnym-soedineniem",
+  "book_id": 20,
+  "priority": 6,
+  "created_at": "2026-05-12T02:14:58.000000Z",
+  "updated_at": "2026-05-12T02:14:58.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "iridi-home-servers",
+  "tags": [],
+  "pages": []
+}

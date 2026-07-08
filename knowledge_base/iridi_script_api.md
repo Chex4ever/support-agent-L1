@@ -17,7 +17,7 @@
 | `class` / `extends` | **НЕТ** | function-конструкторы |
 | `Promise` / `async/await` | **НЕТ** | — |
 | `import` / `export` / `require` | **НЕТ** | `module.Import()` (только для модулей) |
-| `JSON.parse` / `JSON.stringify` | **НЕТ** | — |
+| `JSON.parse` / `JSON.stringify` (camelCase) | **НЕТ** | Используй `JSON.Parse()` / `JSON.Stringify()` (PascalCase) |
 | `fetch` / `XMLHttpRequest` | **НЕТ** | — |
 | `localStorage` / `sessionStorage` | **НЕТ** | — |
 | `console.log` | **НЕТ** | `IR.Log()` |
@@ -303,7 +303,93 @@ IR.SoundVolume(slot, volume);  // 0.0 — 1.0
 
 ---
 
-## 7. Server API (init.js) — особенности серверных скриптов
+## 7. Encryption API — шифрование
+
+### IR.CreateEncryption
+```javascript
+var aes = IR.CreateEncryption(IR.ENCRYPTION_AES, {
+    "Vector": "hex_iv_bytes_separated_by_commas",
+    "Key": "hex_key_bytes_separated_by_commas",
+    "Type": 0  // 0=CBC, 1=ECB
+});
+```
+
+### .Encode / .Decode
+```javascript
+var encrypted = aes.Encode(data, resultType, inputType);
+var decrypted = aes.Decode(data, resultType, inputType);
+```
+
+- `data` — Array (байты) или String (comma-separated decimal)
+- `resultType` — `IR.RESULT_TYPE_ARRAY`, `IR.RESULT_TYPE_STRING`, `IR.BASE64_STRING`
+
+### Важные особенности (экспериментально, build 1.3.87.42647)
+
+**Padding:** iRidi дополняет данные до 16 байт (PKCS7), но ТОЛЬКО если
+длина не кратна 16. Для aligned данных (кратно 16) — padding не добавляется.
+
+  | Вход | Выход | Поведение |
+  |------|-------|-----------|
+  | 1 байт `[0x01]` | 16 | PKCS7 добавлен `0x0F`×15 |
+  | 15 байт | 16 | PKCS7 добавлен `0x01`×1 |
+  | 16 байт | 16 | padding не добавлен |
+  | 12 + ручной PKCS7 | 16 | совместимо со стандартным PKCS7 |
+
+Это НЕ стандартный PKCS7 (RFC 2315 §10.3 требует ВСЕГДА добавлять
+padding, включая полный блок 0x10 для aligned данных). iRidi пропускает
+финализацию для уже выровненных данных.
+
+**Важно:** `.Decode()` уже автоматически стриппит PKCS7 padding.
+При расшифровке внутри iRidi не нужно дополнительно удалять padding.
+
+**Рекомендация:** Всегда делайте ручной PKCS7 padding перед `.Encode()`:
+```javascript
+var padLen = 16 - (data.length % 16);
+for (var i = 0; i < padLen; i++) data.push(padLen);
+```
+После этого ciphertext совместим с любым AES-128-CBC-PKCS7 дешифратором.
+Для расшифровки внутри iRidi используйте `.Decode()` с `inputType`:
+```javascript
+var dec = aes.Decode(cipherBytes, IR.RESULT_TYPE_ARRAY, IR.RESULT_TYPE_ARRAY);
+// dec уже содержит чистые данные без padding
+```
+
+**Формат Key/Vector:** hex-байты через запятую.
+  `"60,25,57,cd"` = байты `[0x60, 0x25, 0x57, 0xcd]`.
+  НЕ десятичные числа! Строка `"1,2,3"` = байты `[0x01, 0x02, 0x03]`.
+
+**Под капотом:** используется OpenSSL (`libcrypto-1_1-x64.dll` в
+составе Studio64). iRidium64.exe импортирует `EVP_CIPHER_CTX_set_padding`
+из неё.
+
+### IR.CalculateHash
+```javascript
+var hash = IR.CalculateHash(mode, string);
+// mode = IR.HASH_MD5, IR.HASH_SHA1, IR.HASH_SHA256, IR.HASH_SHA512
+```
+
+## 8. JSON API — работа с JSON
+
+В iRidi Script JSON API использует PascalCase (не camelCase, как в стандартном JS):
+
+| Метод | Описание |
+|-------|----------|
+| `JSON.Parse(str)` | Преобразует строку в JSON-объект |
+| `JSON.Stringify(obj)` | Преобразует JSON-объект в строку |
+
+### Пример
+```javascript
+var text = '{"firstName": "Peter","lastName": "Smirnoff"}';
+var obj = JSON.Parse(text);
+IR.Log(obj.lastName); // "Smirnoff"
+var str = JSON.Stringify(obj);
+```
+
+**Источник:** `wiki2.iridiummobile.net/JSON_objects`
+
+---
+
+## 9. Server API (init.js) — особенности серверных скриптов
 
 При написании **серверного проекта (init.js)** на iRidi Server:
 
@@ -368,7 +454,7 @@ IR.AddListener(IR.EVENT_START, 0, function() {
 
 ---
 
-## 8. Лицензия (License API)
+## 9. Лицензия (License API)
 
 ```javascript
 IR.License;                     // true/false — есть ли лицензия
@@ -378,7 +464,7 @@ IR.LicenseHardwareID;           // HWID лицензии
 
 ---
 
-## 9. Полезные примеры
+## 10. Полезные примеры
 
 ### Таймер с самокоррекцией (точный)
 ```javascript
@@ -412,7 +498,7 @@ function onTagChange() {
 
 ---
 
-## 10. Чек-лист «Чего НЕТ в iRidi Script»
+## 11. Чек-лист «Чего НЕТ в iRidi Script»
 
 Перед тем как писать JS-скрипт, проверь:
 

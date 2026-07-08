@@ -1,0 +1,50 @@
+{
+  "id": 23,
+  "type": "chapter",
+  "name": "Лицензирование и управление объектами",
+  "slug": "licenzirovanie-i-upravlenie-obieektami",
+  "book_id": 20,
+  "priority": 3,
+  "created_at": "2026-04-30T04:50:55.000000Z",
+  "updated_at": "2026-04-30T04:50:55.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "iridi-home-servers",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Инструкция по переносу объекта iRidi на нового владельца",
+      "id": 24,
+      "slug": "instrukciia-po-perenosu-obieekta-iridi-na-novogo-vladelca",
+      "book_id": 20,
+      "chapter_id": 23,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-04-30T04:51:00.000000Z",
+      "updated_at": "2026-04-30T04:51:06.000000Z",
+      "priority": 1,
+      "owned_by": 5,
+      "book_slug": "iridi-home-servers",
+      "created_by": 5,
+      "updated_by": 5,
+      "revision_count": 1,
+      "editor": "markdown"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": 72,
+  "type": "book",
+  "name": "HS Сервер",
+  "slug": "hs-server",
+  "created_at": "2026-05-15T05:02:07.000000Z",
+  "updated_at": "2026-05-15T05:02:07.000000Z",
+  "created_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "updated_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "owned_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "description": "Статьи: HS Сервер",
+  "description_html": "<p>Статьи: HS Сервер</p>",
+  "default_template_id": null,
+  "image_id": null,
+  "sort_rule_id": null,
+  "cover": null,
+  "tags": [],
+  "shelves": []
+}

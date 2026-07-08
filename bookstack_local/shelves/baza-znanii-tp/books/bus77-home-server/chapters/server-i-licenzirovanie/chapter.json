@@ -1,0 +1,31 @@
+{
+  "id": 10,
+  "type": "chapter",
+  "name": "Сервер и Лицензирование",
+  "slug": "server-i-licenzirovanie",
+  "book_id": 2,
+  "priority": 3,
+  "created_at": "2026-04-29T14:41:11.000000Z",
+  "updated_at": "2026-05-15T07:34:10.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "bus77-home-server",
+  "tags": [],
+  "pages": []
+}

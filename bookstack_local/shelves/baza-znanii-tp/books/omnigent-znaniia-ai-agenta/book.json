@@ -1,0 +1,37 @@
+{
+  "id": 119,
+  "type": "book",
+  "name": "Omnigent — знания AI-агента",
+  "slug": "omnigent-znaniia-ai-agenta",
+  "created_at": "2026-07-03T05:45:58.000000Z",
+  "updated_at": "2026-07-03T05:45:58.000000Z",
+  "created_by": {
+    "id": 9,
+    "name": "Евгений",
+    "slug": "evgenii"
+  },
+  "updated_by": {
+    "id": 9,
+    "name": "Евгений",
+    "slug": "evgenii"
+  },
+  "owned_by": {
+    "id": 9,
+    "name": "Евгений",
+    "slug": "evgenii"
+  },
+  "description": "Внутренняя база знаний L2-агента техподдержки iRidi. Мигрировано из TicketDB SQLite.",
+  "description_html": "<p>Внутренняя база знаний L2-агента техподдержки iRidi. Мигрировано из TicketDB SQLite.</p>",
+  "default_template_id": null,
+  "image_id": null,
+  "sort_rule_id": null,
+  "cover": null,
+  "tags": [],
+  "shelves": [
+    {
+      "id": 1,
+      "name": "База знаний ТП",
+      "slug": "baza-znanii-tp"
+    }
+  ]
+}

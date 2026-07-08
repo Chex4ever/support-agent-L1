@@ -1,0 +1,50 @@
+{
+  "id": 73,
+  "type": "chapter",
+  "name": "Сервисы и доступы",
+  "slug": "servisy-i-dostupy",
+  "book_id": 72,
+  "priority": 2,
+  "created_at": "2026-05-15T05:02:17.000000Z",
+  "updated_at": "2026-05-15T05:02:17.000000Z",
+  "created_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "updated_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "owned_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "description": "Статьи: Сервисы и доступы",
+  "description_html": "<p>Статьи: Сервисы и доступы</p>",
+  "default_template_id": null,
+  "book_slug": "hs-server",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Запрос (операционный): Если Категория = «Сервисы и доступы»:",
+      "id": 74,
+      "slug": "zapros-operacionnyi-esli-kategoriia-servisy-i-dostupy",
+      "book_id": 72,
+      "chapter_id": 73,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-15T05:02:22.000000Z",
+      "updated_at": "2026-05-15T05:02:23.000000Z",
+      "priority": 1,
+      "owned_by": 3,
+      "book_slug": "hs-server",
+      "created_by": 3,
+      "updated_by": 3,
+      "revision_count": 1,
+      "editor": "markdown"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}{% if entry %}Edit {{ entry.category }}/{{ entry.key }}{% else %}New KB Entry{% endif %} — Omnigent{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/kb">KB</a></li>
+        {% if entry %}
+        <li class="breadcrumb-item"><a href="/kb/{{ entry.id }}">{{ entry.category }}/{{ entry.key }}</a></li>
+        <li class="breadcrumb-item active">Edit</li>
+        {% else %}
+        <li class="breadcrumb-item active">New</li>
+        {% endif %}
+    </ol>
+</nav>
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="mb-0">{% if entry %}Edit KB Entry{% else %}New KB Entry{% endif %}</h4>
+    </div>
+    <div class="card-body">
+        {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+
+        <form method="post" action="{% if entry %}/kb/{{ entry.id }}/edit{% else %}/kb/new{% endif %}">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label">Category</label>
+                    <input type="text" name="category" class="form-control" value="{{ entry.category if entry else '' }}" list="category-list" required />
+                    <datalist id="category-list">
+                        {% for c in all_categories %}
+                        <option value="{{ c }}" />
+                        {% endfor %}
+                    </datalist>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Key</label>
+                    <input type="text" name="key" class="form-control" value="{{ entry.key if entry else '' }}" {% if entry %}readonly{% endif %} required />
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Value</label>
+                    <textarea name="value" class="form-control" rows="5" required>{{ entry.value if entry else '' }}</textarea>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Source</label>
+                    <input type="text" name="source" class="form-control" value="{{ entry.source if entry else '' }}" placeholder="e.g. ticket 971, experiment" />
+                </div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">
+                    {% if entry %}Update Entry{% else %}Create Entry{% endif %}
+                </button>
+                <a href="{% if entry %}/kb/{{ entry.id }}{% else %}/kb{% endif %}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

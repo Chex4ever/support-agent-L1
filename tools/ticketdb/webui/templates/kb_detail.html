@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}{{ entry.category }}/{{ entry.key }} — Omnigent{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/kb">KB</a></li>
+        <li class="breadcrumb-item active">{{ entry.category }}/{{ entry.key }}</li>
+    </ol>
+</nav>
+
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+            <h4 class="mb-0 d-inline">
+                <span class="badge bg-info text-dark">{{ entry.category }}</span>
+                <code>{{ entry.key }}</code>
+            </h4>
+            <span class="text-muted ms-2 small">#{{ entry.id }}</span>
+        </div>
+        <div>
+            <a href="/kb/{{ entry.id }}/edit" class="btn btn-sm btn-outline-primary">Edit</a>
+            <form method="post" action="/kb/{{ entry.id }}/delete" style="display:inline" onsubmit="return confirm('Delete this KB entry?')">
+                <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="mb-3">
+            <h6>Value</h6>
+            <div class="kb-value-mono">{{ entry.value }}</div>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4 text-muted small">Source</dt>
+                    <dd class="col-sm-8">{{ entry.source or '—' }}</dd>
+                </dl>
+            </div>
+            <div class="col-md-6">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4 text-muted small">Tags</dt>
+                    <dd class="col-sm-8">
+                        {% if entry.tags %}
+                            {% for tag in entry.tags %}<span class="badge bg-secondary me-1">{{ tag }}</span>{% endfor %}
+                        {% else %}&mdash;{% endif %}
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row g-3 mt-0">
+            <div class="col-md-6">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4 text-muted small">Created</dt>
+                    <dd class="col-sm-8">{{ entry.created_at }}</dd>
+                </dl>
+            </div>
+            <div class="col-md-6">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4 text-muted small">Updated</dt>
+                    <dd class="col-sm-8">{{ entry.updated_at }}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="/kb" class="btn btn-outline-secondary">&larr; Back to KB</a>
+{% endblock %}

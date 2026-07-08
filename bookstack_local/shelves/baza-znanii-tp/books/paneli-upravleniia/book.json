@@ -1,0 +1,37 @@
+{
+  "id": 36,
+  "type": "book",
+  "name": "Панели управления",
+  "slug": "paneli-upravleniia",
+  "created_at": "2026-05-05T04:14:33.000000Z",
+  "updated_at": "2026-05-05T04:14:33.000000Z",
+  "created_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "updated_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "owned_by": {
+    "id": 3,
+    "name": "Болтовский Константин Сергеевич",
+    "slug": "boltovskii-konstantin-sergeevic"
+  },
+  "description": "Статьи: Панели управления",
+  "description_html": "<p>Статьи: Панели управления</p>",
+  "default_template_id": null,
+  "image_id": null,
+  "sort_rule_id": null,
+  "cover": null,
+  "tags": [],
+  "shelves": [
+    {
+      "id": 1,
+      "name": "База знаний ТП",
+      "slug": "baza-znanii-tp"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": 49,
+  "type": "chapter",
+  "name": "Адаптация интерфейса",
+  "slug": "adaptaciia-interfeisa",
+  "book_id": 17,
+  "priority": 6,
+  "created_at": "2026-05-10T16:56:46.000000Z",
+  "updated_at": "2026-05-10T16:56:46.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "iridi-pro",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Автоматический выбор разрешения проекта (DesignSwitch)",
+      "id": 50,
+      "slug": "avtomaticeskii-vybor-razreseniia-proekta-designswitch",
+      "book_id": 17,
+      "chapter_id": 49,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-10T16:56:53.000000Z",
+      "updated_at": "2026-05-10T16:57:02.000000Z",
+      "priority": 1,
+      "owned_by": 5,
+      "book_slug": "iridi-pro",
+      "created_by": 5,
+      "updated_by": 5,
+      "revision_count": 1,
+      "editor": "markdown"
+    }
+  ]
+}

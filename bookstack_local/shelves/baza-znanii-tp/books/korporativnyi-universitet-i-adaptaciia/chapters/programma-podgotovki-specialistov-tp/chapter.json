@@ -1,0 +1,31 @@
+{
+  "id": 106,
+  "type": "chapter",
+  "name": "Программа подготовки специалистов ТП",
+  "slug": "programma-podgotovki-specialistov-tp",
+  "book_id": 105,
+  "priority": 2,
+  "created_at": "2026-05-28T07:01:33.000000Z",
+  "updated_at": "2026-05-28T07:01:33.000000Z",
+  "created_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "updated_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "owned_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "korporativnyi-universitet-i-adaptaciia",
+  "tags": [],
+  "pages": []
+}

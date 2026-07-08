@@ -1,0 +1,31 @@
+{
+  "id": 105,
+  "type": "book",
+  "name": "Корпоративный университет и адаптация",
+  "slug": "korporativnyi-universitet-i-adaptaciia",
+  "created_at": "2026-05-28T07:01:29.000000Z",
+  "updated_at": "2026-05-28T07:01:29.000000Z",
+  "created_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "updated_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "owned_by": {
+    "id": 11,
+    "name": "AI_AGENT",
+    "slug": "ai-agent"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "image_id": null,
+  "sort_rule_id": null,
+  "cover": null,
+  "tags": [],
+  "shelves": []
+}

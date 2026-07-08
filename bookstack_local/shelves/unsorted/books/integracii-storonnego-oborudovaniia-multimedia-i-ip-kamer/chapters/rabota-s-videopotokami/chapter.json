@@ -1,0 +1,50 @@
+{
+  "id": 52,
+  "type": "chapter",
+  "name": "Работа с видеопотоками",
+  "slug": "rabota-s-videopotokami",
+  "book_id": 51,
+  "priority": 2,
+  "created_at": "2026-05-11T13:51:46.000000Z",
+  "updated_at": "2026-05-11T13:51:46.000000Z",
+  "created_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "updated_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "owned_by": {
+    "id": 5,
+    "name": "Илья",
+    "slug": "ilia"
+  },
+  "description": "Автоматически создано Агентом",
+  "description_html": "<p>Автоматически создано Агентом</p>",
+  "default_template_id": null,
+  "book_slug": "integracii-storonnego-oborudovaniia-multimedia-i-ip-kamer",
+  "tags": [],
+  "pages": [
+    {
+      "name": "Захват и отображение кадров из RTSP-потока в iRidium Pro",
+      "id": 53,
+      "slug": "zaxvat-i-otobrazenie-kadrov-iz-rtsp-potoka-v-iridium-pro",
+      "book_id": 51,
+      "chapter_id": 52,
+      "draft": false,
+      "template": false,
+      "created_at": "2026-05-11T13:51:50.000000Z",
+      "updated_at": "2026-05-11T13:52:03.000000Z",
+      "priority": 1,
+      "owned_by": 5,
+      "book_slug": "integracii-storonnego-oborudovaniia-multimedia-i-ip-kamer",
+      "created_by": 5,
+      "updated_by": 5,
+      "revision_count": 1,
+      "editor": "markdown"
+    }
+  ]
+}
