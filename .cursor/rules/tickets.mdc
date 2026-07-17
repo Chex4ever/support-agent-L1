@@ -1,0 +1,22 @@
+---
+description: Правила работы с тикетами в папке tickets/
+globs: "tickets/**/*"
+alwaysApply: false
+---
+
+# Работа с тикетами
+
+Полные правила: [rules/](../../rules/README.md)
+
+## При открытии файлов тикета
+
+1. Прочитай `dialog.md` — история переписки
+2. Проверь `research.md` — текущий анализ
+3. Следуй [rules/03-research-format.md](../../rules/03-research-format.md)
+4. Фактчекинг: [rules/04-factchecking.md](../../rules/04-factchecking.md)
+
+## Запреты
+
+- Ответ клиенту → только `reply_draft.txt`
+- Статус `completed` → только пользователь
+- Не додумывай факты без ссылки на сообщение клиента

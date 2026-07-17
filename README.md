@@ -3,6 +3,9 @@
 Система для анализа, классификации и обработки тикетов техподдержки iRidi.
 Парсит тикеты из Omnidesk, ищет ответы в базе знаний, формирует рекомендации инженеру.
 
+> **Правила для AI-агентов:** [rules/](rules/README.md) — единый источник для Cursor, OpenCode и других агентов.  
+> Точки входа: [AGENTS.md](AGENTS.md) · [.cursor/rules/](.cursor/rules/) · [.opencode/AGENTS.md](.opencode/AGENTS.md) · [opencode.json](opencode.json)
+
 ---
 
 ## Быстрый старт
@@ -78,57 +81,18 @@ Omnidesk ──▶ L1 Agent (web/) ──▶ TicketDB (tools/ticketdb/)
 
 ## Работа с тикетами
 
-### TicketDB CLI
+Подробные правила для AI-агентов: [rules/02-ticketdb.md](rules/02-ticketdb.md), [rules/06-ticket-structure.md](rules/06-ticket-structure.md).
 
 ```powershell
-# Просмотр активных тикетов
 python -m tools.ticketdb.cli tickets list --status in_progress
-
-# Детали тикета
 python -m tools.ticketdb.cli tickets get <id>
-
-# Создать новый тикет
-python -m tools.ticketdb.cli tickets add <id> --status in_progress --product "..." --summary "..."
-
-# Обновить статус
-python -m tools.ticketdb.cli tickets update <id> --status completed --reply-sent 1
-
-# База знаний
-python -m tools.ticketdb.cli kb list --category android         # факты по категории
-python -m tools.ticketdb.cli kb list --search "padding"        # поиск
-python -m tools.ticketdb.cli kb create iridi_script aes_padding "..." --source "ticket 971"
-```
-
-### Структура папки тикета
-
-```
-tickets/<case_number>/
-├── research.md       # анализ, вопросы клиента, классификация
-├── dialog.md         # переписка с таймштампами
-├── reply_draft.txt   # черновик ответа
-├── files/            # вложения, скрипты, тестовые проекты
-└── temp/             # артефакты сборки
 ```
 
 ---
 
 ## Инструменты (tools/)
 
-```powershell
-# Получить сообщения из Omnidesk
-python tools/omnidesk/fetch_messages.py <case_id>
-
-# Скачать вложения
-python tools/omnidesk/download_attachments.py <case_id> --ocr
-
-# Проанализировать .irpz проект
-python tools/project/analyze_irpz.py <file.irpz>
-
-# OCR скриншота
-python tools/image/ocr.py screenshot.png -p monitor
-```
-
-Подробнее: `tools/README.md`.
+См. [rules/05-tools.md](rules/05-tools.md) и [tools/README.md](tools/README.md).
 
 ---
 

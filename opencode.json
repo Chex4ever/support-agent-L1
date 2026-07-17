@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "rules/README.md",
+    "rules/01-workflow.md",
+    "rules/02-ticketdb.md",
+    "rules/03-research-format.md",
+    "rules/04-factchecking.md",
+    "rules/05-tools.md",
+    "rules/06-ticket-structure.md",
+    "rules/07-bookstack.md",
+    "rules/08-critical.md",
+    "rules/09-iridi-script.md",
+    "rules/10-aes-encryption.md",
+    "rules/11-ocr.md"
+  ]
+}

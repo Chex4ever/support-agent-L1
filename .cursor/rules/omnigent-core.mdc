@@ -1,0 +1,34 @@
+---
+description: Omnigent — онбординг и критические правила AI-агента техподдержки
+alwaysApply: true
+---
+
+# Omnigent AI Agent
+
+**Единый источник правил:** `rules/` — прочитай все файлы перед работой над тикетом.
+
+Оглавление: [rules/README.md](../../rules/README.md)
+
+## Обязательный порядок чтения
+
+1. `rules/01-workflow.md` — старт сессии
+2. `rules/02-ticketdb.md` — TicketDB
+3. `rules/03-research-format.md` — формат research.md
+4. `rules/04-factchecking.md` — фактчекинг
+5. `rules/05-tools.md` — инструменты
+6. `rules/06-ticket-structure.md` — структура тикета
+7. `rules/07-bookstack.md` — BookStack KB
+8. `rules/08-critical.md` — критические запреты
+9. `rules/09-iridi-script.md` — iRidi Script
+10. `rules/10-aes-encryption.md` — AES
+11. `rules/11-ocr.md` — OCR
+
+## Критические запреты
+
+- **НИКОГДА** не отправляй ответы клиенту — только `tickets/<id>/reply_draft.txt`
+- **НИКОГДА** не запускай `git clean` — удалит папку `tickets/` (в `.gitignore`)
+- **НИКОГДА** не ставь тикету статус `completed`
+- **НИКОГДА** не удаляй чужие статьи BookStack
+- **НИКОГДА** не коммить без явной просьбы пользователя
+
+Полный текст: [rules/08-critical.md](../../rules/08-critical.md)

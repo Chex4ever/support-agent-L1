@@ -1,0 +1,20 @@
+---
+description: iRidi Script ограничения при работе с .js файлами в проектах
+globs: "**/*.{js,irpz,sirpz}"
+alwaysApply: false
+---
+
+# iRidi Script
+
+Перед написанием JS **обязательно** сверься с `knowledge_base/iridi_script_api.md`.
+
+Полные правила: [rules/09-iridi-script.md](../../rules/09-iridi-script.md)
+
+## Ключевое
+
+- Нет `setTimeout`/`setInterval` → `IR.SetTimeout`/`IR.SetInterval`
+- Нет стрелочных функций, `let`/`const`, `JSON.parse`/`JSON.stringify`, `console.log`
+- Server Tags: чтение `IR.GetVariable`, запись только `IR.GetServer().Set()`
+- **Никогда** `parseFloat(IR.GetVariable(...)) || default` — используй `isNaN()`
+
+AES: [rules/10-aes-encryption.md](../../rules/10-aes-encryption.md)
