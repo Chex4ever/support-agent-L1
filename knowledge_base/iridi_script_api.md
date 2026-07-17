@@ -194,7 +194,7 @@ var val = IR.GetVariable("Full.Path.To.Token");
 ```
 Пути:
 - `System.*` — системные токены (Update, Online, и т.д.)
-- `Global.*` — Project Tokens (КУ/КОС)
+- `Global.*` — Project Tokens (Токены проекта)
 - `Server.Tags.*` — **виртуальные тэги сервера** (в серверном проекте)
 - `Drivers.DriverName.*` — токены драйвера
 - `UI.PageName.ItemName` — GUI-теги
@@ -232,7 +232,7 @@ var val = IR.GetServer().Get("TagName");
 // System Tokens
 var update = IR.GetVariable("System.Update");
 
-// Project Tokens (КУ/КОС)
+// Project Tokens (Токены проекта)
 var myVar = IR.GetVariable("Global.MyVar");
 IR.SetVariable("Global.MyVar", 42);
 
@@ -368,7 +368,72 @@ var hash = IR.CalculateHash(mode, string);
 // mode = IR.HASH_MD5, IR.HASH_SHA1, IR.HASH_SHA256, IR.HASH_SHA512
 ```
 
-## 8. JSON API — работа с JSON
+## 8. Push API — push-уведомления
+
+### IR.SendPush
+```javascript
+IR.SendPush(title, js_data, group_id, status_callback, this_ptr, sound_type);
+```
+Отправляет push-уведомление (FCM/APNs) на панели i3 Pro из серверного скрипта (init.js).
+**Только для iRidium Server!**
+
+**Параметры (6 штук):**
+
+| # | Параметр | Тип | Описание |
+|---|----------|-----|----------|
+| 1 | `title` | String | Текст уведомления |
+| 2 | `js_data` | String | Данные для JS-скрипта на принимающей панели (строка или JSON) |
+| 3 | `group_id` | Number | ID группы панелей из iRidi Cloud (Users & Panels). `0` = всем группам |
+| 4 | `status_callback` | Function | **Колбек логирования результата!** Получает `object.Error` (0=успех) и `object.ErrorDescription` |
+| 5 | `this_ptr` | this | Указатель на окружение, доступен в status_callback как `this` |
+| 6 | `sound_type` | Number | `0` = короткий звук (по умолч.), `1` = длинный звук |
+
+**Ограничения:**
+- iOS: до 2 КБ на уведомление
+- Android: до 4 КБ на уведомление
+- Символы `&` и `#` **НЕ ПОДДЕРЖИВАЮТСЯ** в title и js_data
+
+### Push Groups
+
+**Группы панелей настраиваются В ЛИЧНОМ КАБИНЕТЕ iRidi Cloud** (НЕ в приложении):
+- Объект → Users & Panels → создать/редактировать группу
+- Группа привязывается к «пользователь + проект» (автоматически для всех панелей)
+- Можно привязать к HWID конкретной панели
+
+### Примеры
+
+```javascript
+// Простой push (только текст)
+IR.SendPush("Дверь открыта", "", 1, null, this, 0);
+
+// Push с status_callback — логирование результата отправки
+IR.SendPush("Дверь открыта", "", 1, function(obj) {
+    IR.Log("Push result: code=" + obj.Error + " desc=" + obj.ErrorDescription);
+    // obj.Error = 0  → успех (push ушёл в FCM/APNs)
+    // obj.Error > 0  → ошибка (obj.ErrorDescription — текст)
+}, this, 0);
+
+// Аварийный push — всем группам + длинный звук + данные для панели
+IR.SendPush("ПОЖАР!", "fire_alarm", 0, function(obj) {
+    IR.Log("Fire push: " + obj.Error + " - " + obj.ErrorDescription);
+}, this, 1);
+```
+
+### Приём push на панели (IR.EVENT_RECEIVE_PUSH_NOTIFY)
+
+```javascript
+// Только для i3 Pro (НЕ сервер!)
+IR.AddListener(IR.EVENT_RECEIVE_PUSH_NOTIFY, 0, function(text, data, group) {
+    IR.Log("Push received: " + text + " data=" + data + " group=" + group);
+    if (data === "fire_alarm") { IR.ShowPage("Alarm"); }
+});
+```
+
+**Источники:** [dev.iridiummobile.net/Push_API/en](https://dev.iridiummobile.net/Push_API/en), ticket #763-321866
+
+---
+
+## 9. JSON API — работа с JSON
 
 В iRidi Script JSON API использует PascalCase (не camelCase, как в стандартном JS):
 
@@ -389,7 +454,7 @@ var str = JSON.Stringify(obj);
 
 ---
 
-## 9. Server API (init.js) — особенности серверных скриптов
+## 10. Server API (init.js) — особенности серверных скриптов
 
 При написании **серверного проекта (init.js)** на iRidi Server:
 
@@ -454,7 +519,7 @@ IR.AddListener(IR.EVENT_START, 0, function() {
 
 ---
 
-## 9. Лицензия (License API)
+## 11. Лицензия (License API)
 
 ```javascript
 IR.License;                     // true/false — есть ли лицензия
@@ -464,7 +529,7 @@ IR.LicenseHardwareID;           // HWID лицензии
 
 ---
 
-## 10. Полезные примеры
+## 12. Полезные примеры
 
 ### Таймер с самокоррекцией (точный)
 ```javascript
@@ -498,7 +563,7 @@ function onTagChange() {
 
 ---
 
-## 11. Чек-лист «Чего НЕТ в iRidi Script»
+## 13. Чек-лист «Чего НЕТ в iRidi Script»
 
 Перед тем как писать JS-скрипт, проверь:
 

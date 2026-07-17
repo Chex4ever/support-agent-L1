@@ -1,0 +1,129 @@
+2026-07-13 13:07:05,767 [WARNING] Running WITHOUT TLS (insecure!)
+2026-07-13 13:07:05,769 [INFO] VIDAA TV Emulator started on 0.0.0.0:36669
+2026-07-13 13:07:05,770 [INFO] Emulator ready. PIN: 1234. Press Ctrl+C to stop.
+2026-07-13 13:07:06,647 [INFO] Client disconnected: ('172.17.130.97', 60800) (id=?)
+2026-07-13 13:07:08,079 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720388
+2026-07-13 13:07:08,083 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=0)
+2026-07-13 13:07:08,086 [INFO] CONNACK sent to ('127.0.0.1', 62153)
+2026-07-13 13:07:43,101 [INFO] Client disconnected: ('127.0.0.1', 62153) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:07:43,102 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720359
+2026-07-13 13:07:43,106 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=0)
+2026-07-13 13:07:43,107 [INFO] CONNACK sent to ('127.0.0.1', 58557)
+2026-07-13 13:07:50,273 [INFO] Client disconnected: ('172.17.130.97', 60804) (id=?)
+2026-07-13 13:07:50,313 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720381
+2026-07-13 13:07:50,316 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=-1)
+2026-07-13 13:07:50,318 [INFO] CONNACK sent to ('172.17.130.97', 60822)
+2026-07-13 13:07:54,370 [DEBUG] PUB: ('172.17.130.97', 60822) -> /remoteapp/tv/remote_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/sendkey
+2026-07-13 13:07:54,381 [INFO] KEY: KEY_VOLUME_UP
+2026-07-13 13:07:54,673 [DEBUG] PUB: ('172.17.130.97', 60822) -> /remoteapp/tv/remote_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/sendkey
+2026-07-13 13:07:54,683 [INFO] KEY: KEY_VOLUME_UP
+2026-07-13 13:07:54,975 [DEBUG] PUB: ('172.17.130.97', 60822) -> /remoteapp/tv/remote_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/sendkey
+2026-07-13 13:07:54,977 [INFO] KEY: KEY_MUTE
+2026-07-13 13:07:55,279 [DEBUG] PUB: ('172.17.130.97', 60822) -> /remoteapp/tv/ui_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/changesource
+2026-07-13 13:07:55,289 [INFO] Source: 4
+2026-07-13 13:07:55,584 [DEBUG] PUB: ('172.17.130.97', 60822) -> /remoteapp/tv/platform_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/changevolume
+2026-07-13 13:07:55,595 [INFO] Volume: 90
+2026-07-13 13:08:18,111 [INFO] Client disconnected: ('127.0.0.1', 58557) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:08:18,111 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720346
+2026-07-13 13:08:18,114 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=0)
+2026-07-13 13:08:18,115 [INFO] CONNACK sent to ('127.0.0.1', 58571)
+2026-07-13 13:08:25,347 [INFO] Client disconnected: ('172.17.130.97', 60822) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:08:25,348 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720336
+2026-07-13 13:08:25,363 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=-1)
+2026-07-13 13:08:25,365 [INFO] CONNACK sent to ('172.17.130.97', 60852)
+2026-07-13 13:08:53,117 [INFO] Client disconnected: ('127.0.0.1', 58571) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:08:53,118 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720061
+2026-07-13 13:08:53,120 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=0)
+2026-07-13 13:08:53,120 [INFO] CONNACK sent to ('127.0.0.1', 63280)
+2026-07-13 13:09:00,397 [INFO] Client disconnected: ('172.17.130.97', 60852) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:09:00,398 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720051
+2026-07-13 13:09:00,400 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=-1)
+2026-07-13 13:09:00,400 [INFO] CONNACK sent to ('172.17.130.97', 60868)
+2026-07-13 13:09:16,515 [INFO] Client disconnected: ('172.17.130.97', 60868) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:09:16,556 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720003
+2026-07-13 13:09:16,558 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=-1)
+2026-07-13 13:09:16,558 [INFO] CONNACK sent to ('172.17.130.97', 60876)
+2026-07-13 13:09:21,614 [DEBUG] PUB: ('172.17.130.97', 60876) -> /remoteapp/tv/remote_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/sendkey
+2026-07-13 13:09:21,624 [INFO] KEY: KEY_VOLUME_UP
+2026-07-13 13:09:21,817 [DEBUG] PUB: ('172.17.130.97', 60876) -> /remoteapp/tv/remote_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/sendkey
+2026-07-13 13:09:21,819 [INFO] KEY: KEY_VOLUME_UP
+2026-07-13 13:09:22,021 [DEBUG] PUB: ('172.17.130.97', 60876) -> /remoteapp/tv/remote_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/sendkey
+2026-07-13 13:09:22,022 [INFO] KEY: KEY_VOLUME_UP
+2026-07-13 13:09:22,723 [DEBUG] PUB: ('172.17.130.97', 60876) -> /remoteapp/tv/remote_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/sendkey
+2026-07-13 13:09:22,733 [INFO] KEY: KEY_MUTE
+2026-07-13 13:09:23,030 [DEBUG] PUB: ('172.17.130.97', 60876) -> /remoteapp/tv/ui_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/changesource
+2026-07-13 13:09:23,031 [INFO] Source: 5
+2026-07-13 13:09:23,334 [DEBUG] PUB: ('172.17.130.97', 60876) -> /remoteapp/tv/platform_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/changevolume
+2026-07-13 13:09:23,335 [INFO] Volume: 40
+2026-07-13 13:09:28,124 [INFO] Client disconnected: ('127.0.0.1', 63280) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:09:28,124 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720016
+2026-07-13 13:09:28,127 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=0)
+2026-07-13 13:09:28,127 [INFO] CONNACK sent to ('127.0.0.1', 49879)
+2026-07-13 13:09:48,869 [DEBUG] PUB: ('172.17.130.97', 60876) -> /remoteapp/tv/remote_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/sendkey
+2026-07-13 13:09:48,871 [INFO] KEY: KEY_DOWN
+2026-07-13 13:09:51,087 [DEBUG] PUB: ('172.17.130.97', 60876) -> /remoteapp/tv/remote_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/sendkey
+2026-07-13 13:09:51,088 [INFO] KEY: KEY_VOLUME_DOWN
+2026-07-13 13:09:51,566 [INFO] Client disconnected: ('172.17.130.97', 60876) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:09:51,568 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151719974
+2026-07-13 13:09:51,584 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=-1)
+2026-07-13 13:09:51,586 [INFO] CONNACK sent to ('172.17.130.97', 60910)
+2026-07-13 13:09:52,190 [DEBUG] PUB: ('172.17.130.97', 60910) -> /remoteapp/tv/remote_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/sendkey
+2026-07-13 13:09:52,202 [INFO] KEY: KEY_VOLUME_DOWN
+2026-07-13 13:09:55,299 [DEBUG] PUB: ('172.17.130.97', 60910) -> /remoteapp/tv/remote_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/sendkey
+2026-07-13 13:09:55,310 [INFO] KEY: KEY_VOLUME_DOWN
+2026-07-13 13:09:58,913 [DEBUG] PUB: ('172.17.130.97', 60910) -> /remoteapp/tv/remote_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/sendkey
+2026-07-13 13:09:58,915 [INFO] KEY: KEY_VOLUME_DOWN
+2026-07-13 13:10:00,434 [DEBUG] PUB: ('172.17.130.97', 60910) -> /remoteapp/tv/remote_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/sendkey
+2026-07-13 13:10:00,445 [INFO] KEY: KEY_VOLUME_DOWN
+2026-07-13 13:10:02,219 [DEBUG] PUB: ('172.17.130.97', 60910) -> /remoteapp/tv/platform_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/changevolume
+2026-07-13 13:10:02,221 [INFO] Volume: 29
+2026-07-13 13:10:03,131 [INFO] Client disconnected: ('127.0.0.1', 49879) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:10:03,131 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151719987
+2026-07-13 13:10:03,135 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=0)
+2026-07-13 13:10:03,136 [INFO] CONNACK sent to ('127.0.0.1', 54917)
+2026-07-13 13:10:07,373 [DEBUG] PUB: ('172.17.130.97', 60910) -> /remoteapp/tv/ui_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/changesource
+2026-07-13 13:10:07,374 [INFO] Source: 3
+2026-07-13 13:10:09,510 [DEBUG] PUB: ('172.17.130.97', 60910) -> /remoteapp/tv/ui_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/changesource
+2026-07-13 13:10:09,511 [INFO] Source: 4
+2026-07-13 13:10:18,714 [DEBUG] PUB: ('172.17.130.97', 60910) -> /remoteapp/tv/ui_service/AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001/actions/launchapp
+2026-07-13 13:10:18,725 [INFO] App launched: disney+
+2026-07-13 13:10:26,592 [INFO] Client disconnected: ('172.17.130.97', 60910) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:10:26,593 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151719961
+2026-07-13 13:10:26,607 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=-1)
+2026-07-13 13:10:26,609 [INFO] CONNACK sent to ('172.17.130.97', 60926)
+2026-07-13 13:10:38,138 [INFO] Client disconnected: ('127.0.0.1', 54917) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:10:38,139 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151719958
+2026-07-13 13:10:38,141 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=0)
+2026-07-13 13:10:38,141 [INFO] CONNACK sent to ('127.0.0.1', 53198)
+2026-07-13 13:11:01,614 [INFO] Client disconnected: ('172.17.130.97', 60926) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:11:01,616 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720188
+2026-07-13 13:11:01,618 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=-1)
+2026-07-13 13:11:01,619 [INFO] CONNACK sent to ('172.17.130.97', 60942)
+2026-07-13 13:11:13,144 [INFO] Client disconnected: ('127.0.0.1', 53198) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:11:13,145 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720137
+2026-07-13 13:11:13,147 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=0)
+2026-07-13 13:11:13,148 [INFO] CONNACK sent to ('127.0.0.1', 54831)
+2026-07-13 13:11:36,624 [INFO] Client disconnected: ('172.17.130.97', 60942) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:11:36,625 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720159
+2026-07-13 13:11:36,640 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=-1)
+2026-07-13 13:11:36,642 [INFO] CONNACK sent to ('172.17.130.97', 60958)
+2026-07-13 13:11:48,151 [INFO] Client disconnected: ('127.0.0.1', 54831) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:11:48,152 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720108
+2026-07-13 13:11:48,154 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=0)
+2026-07-13 13:11:48,154 [INFO] CONNACK sent to ('127.0.0.1', 54809)
+2026-07-13 13:12:11,646 [INFO] Client disconnected: ('172.17.130.97', 60958) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:12:11,647 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720114
+2026-07-13 13:12:11,660 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=-1)
+2026-07-13 13:12:11,662 [INFO] CONNACK sent to ('172.17.130.97', 60972)
+2026-07-13 13:12:23,159 [INFO] Client disconnected: ('127.0.0.1', 54809) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:12:23,160 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720079
+2026-07-13 13:12:23,170 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=0)
+2026-07-13 13:12:23,171 [INFO] CONNACK sent to ('127.0.0.1', 60025)
+2026-07-13 13:12:46,668 [INFO] Client disconnected: ('172.17.130.97', 60972) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:12:46,670 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720085
+2026-07-13 13:12:46,672 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=-1)
+2026-07-13 13:12:46,672 [INFO] CONNACK sent to ('172.17.130.97', 60988)
+2026-07-13 13:12:58,174 [INFO] Client disconnected: ('127.0.0.1', 60025) (id=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon_001)
+2026-07-13 13:12:58,175 [INFO] CONNECT: cid=AA:BB:CC:DD:EE:FF$his$637064_vidaacommon user=his$6239759786151720802
+2026-07-13 13:12:58,177 [INFO] Dynamic credentials validated for MAC=AA:BB:CC:DD:EE:FF (offset=0)
+2026-07-13 13:12:58,178 [INFO] CONNACK sent to ('127.0.0.1', 51751)

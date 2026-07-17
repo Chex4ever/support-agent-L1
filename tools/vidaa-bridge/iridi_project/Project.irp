@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Panel ProjectType="2" Name="VIDAA Bridge" Width="800" Height="600">
+  <!-- ====== AV&CS HTTP Driver for sending commands ====== -->
+  <Device
+    Name="VIDAA Command (HTTP)"
+    Type="AV &amp; Custom Systems (HTTP)"
+    Host="127.0.0.1"
+    Port="8090"
+    Mode="0"
+    SSL="0"
+    ScriptMode="1"
+    DisableQueue="0"
+    SendCommandAttempts="0"
+    ConnectWaitTimeMax="5000"
+    ReceiveWaitTimeMax="5000"
+    LogLevel="0"
+    BackgroundMode="0"
+    Uri="/command"
+    Method="POST"
+    ContentType="text/plain"
+  >
+  </Device>
+
+  <!-- ====== AV&CS HTTP Driver for reading state ====== -->
+  <Device
+    Name="VIDAA State (HTTP)"
+    Type="AV &amp; Custom Systems (HTTP)"
+    Host="127.0.0.1"
+    Port="8090"
+    Mode="0"
+    SSL="0"
+    ScriptMode="1"
+    DisableQueue="0"
+    SendCommandAttempts="0"
+    ConnectWaitTimeMax="5000"
+    ReceiveWaitTimeMax="10000"
+    LogLevel="0"
+    BackgroundMode="0"
+    Uri="/state"
+    Method="GET"
+  >
+  </Device>
+
+  <!-- ====== Server Tags (Project Tokens) ====== -->
+  <VirtualTag Name="TV_Command" />
+  <VirtualTag Name="TV_Connected" />
+  <VirtualTag Name="TV_Power" />
+  <VirtualTag Name="TV_Volume" />
+  <VirtualTag Name="TV_Muted" />
+  <VirtualTag Name="TV_Source" />
+  <VirtualTag Name="TV_State" />
+
+  <!-- ====== Relationships ====== -->
+  <RelationTags LHS="Server.Tags.TV_Connected">
+    <RelationTags LHS="Server.Tags.TV_Power">
+      <RelationTags LHS="Server.Tags.TV_Volume">
+        <RelationTags LHS="Server.Tags.TV_Muted">
+          <RelationTags LHS="Server.Tags.TV_Source">
+            <RelationTags LHS="Server.Tags.TV_State">
+            </RelationTags>
+          </RelationTags>
+        </RelationTags>
+      </RelationTags>
+    </RelationTags>
+  </RelationTags>
+
+  <!-- ====== Server Script ====== -->
+  <Script Name="VIDAA Bridge Main" File="main.js" />
+</Panel>

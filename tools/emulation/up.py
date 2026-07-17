@@ -26,6 +26,7 @@ def main():
     parser.add_argument("--knx-only", action="store_true", help="Start only knx-e")
     parser.add_argument("--mdb-only", action="store_true", help="Start only mdb-e")
     parser.add_argument("--http-only", action="store_true", help="Start only http-mock")
+    parser.add_argument("--bacnet-only", action="store_true", help="Start only bacnet-e")
     parser.add_argument("--config", help="Path to emulation config YAML")
     parser.add_argument("--modbus-config",
                         help="Modbus register-init YAML (relative to mdb-e dir)")
@@ -45,19 +46,27 @@ def main():
     if args.modbus_config:
         cfg["mdb"]["config"] = args.modbus_config
 
-    skip_knx = args.mdb_only or args.http_only
-    skip_mdb = args.knx_only or args.http_only
-    skip_http = args.knx_only or args.mdb_only
+    skip_knx = args.mdb_only or args.http_only or args.bacnet_only
+    skip_mdb = args.knx_only or args.http_only or args.bacnet_only
+    skip_http = args.knx_only or args.mdb_only or args.bacnet_only
+    skip_bacnet = args.knx_only or args.mdb_only or args.http_only
 
     if args.knx_only:
         skip_mdb = True
         skip_http = True
+        skip_bacnet = True
     elif args.mdb_only:
         skip_knx = True
         skip_http = True
+        skip_bacnet = True
     elif args.http_only:
         skip_knx = True
         skip_mdb = True
+        skip_bacnet = True
+    elif args.bacnet_only:
+        skip_knx = True
+        skip_mdb = True
+        skip_http = True
 
     stack = EmulationStack(cfg)
 
@@ -78,7 +87,7 @@ def main():
         return
 
     logger.info("Starting emulation stack...")
-    result = stack.start(skip_knx=skip_knx, skip_mdb=skip_mdb, skip_http=skip_http)
+    result = stack.start(skip_knx=skip_knx, skip_mdb=skip_mdb, skip_http=skip_http, skip_bacnet=skip_bacnet)
     logger.info("Started: %s", ", ".join(result["started"]))
 
     logger.info("Waiting for emulators to be ready...")
@@ -103,6 +112,8 @@ def main():
     mdb_port = cfg["mdb"]["web_port"]
     mdb_modbus = cfg["mdb"]["modbus_port"]
     http_port = cfg["http_mock"]["port"]
+    bacnet_port = cfg["bacnet"]["web_port"]
+    bacnet_udp = cfg["bacnet"]["udp_port"]
 
     print()
     print("=== Emulation Stack ===")
@@ -112,6 +123,8 @@ def main():
     print(f"  Modbus web UI:  http://localhost:{mdb_port}")
     print(f"  HTTP mock:      http://localhost:{http_port}")
     print(f"  Amp mock:       http://localhost:{http_port}/httpapi.asp")
+    print(f"  BACnet:         UDP {bacnet_udp}")
+    print(f"  BACnet web UI:  http://localhost:{bacnet_port}")
     print()
     print("Press Ctrl+C to stop all emulators.")
     print()

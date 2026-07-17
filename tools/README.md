@@ -64,7 +64,7 @@ tools/
 python -m tools.emulation.up --project tickets/736-506651/files/project/project.irpz
 ```
 
-This starts all 3 emulators, imports the KNX project into knx-e, and prints connection details.
+This starts KNX + Modbus + HTTP mock emulators, imports the project, and prints connection details.
 
 ### Subcommands
 
@@ -72,6 +72,7 @@ This starts all 3 emulators, imports the KNX project into knx-e, and prints conn
 python -m tools.emulation.up --knx-only                    # start only KNX
 python -m tools.emulation.up --mdb-only --modbus-config my_config.yaml
 python -m tools.emulation.up --http-only
+python -m tools.emulation.up --bacnet-only                  # start only BACnet-E
 python -m tools.emulation.up --status                       # check running status
 python -m tools.emulation.up --stop                         # stop all
 ```
@@ -84,6 +85,36 @@ By default mdb-e uses `register-init.yaml`. Pass a different config:
 python -m tools.emulation.up --mdb-only --modbus-config register-init-k40a-alice.yaml
 ```
 
+### BACnet-E
+
+**BACnet-E** — BACnet/IP эмулятор на `C:\iridi\bacnet-e`.
+
+Отвечает на: Who-Is/I-Am, ReadProperty, ReadPropertyMultiple, WriteProperty, SubscribeCOV.
+
+```powershell
+# Ручной запуск
+python C:\iridi\bacnet-e\bacnet-e.py --web-port 8003
+
+# Через оркестратор
+python -m tools.emulation.up --bacnet-only
+```
+
+**REST API** (port 8003):
+
+| Endpoint | Описание |
+|----------|----------|
+| `GET /api/status` | Статус эмулятора |
+| `GET /api/objects` | Список BACnet-объектов |
+| `GET /api/objects/{type}/{inst}` | Детали объекта |
+| `POST /api/objects/{type}/{inst}/value` | Установить Present-Value |
+| `POST /api/objects` | Создать объект |
+| `DELETE /api/objects/{type}/{inst}` | Удалить объект |
+| `GET /api/log` | Лог пакетов |
+| `POST /api/project/import-sirpz` | Импорт .sirpz/.irpz (multipart) |
+| `WS /api/ws` | Real-time события |
+
+**Web UI:** http://127.0.0.1:8003
+
 ### Network ports
 
 | Service | Port | Protocol |
@@ -93,6 +124,16 @@ python -m tools.emulation.up --mdb-only --modbus-config register-init-k40a-alice
 | Modbus | 502 | TCP |
 | Modbus web | 7999 | HTTP |
 | HTTP mock | 8002 | HTTP |
+| BACnet | 47808 | UDP |
+| BACnet web | 8003 | HTTP |
+
+## Wiki Search
+
+| Tool | Description | Usage |
+|------|-------------|-------|
+| `wiki/search.py` | Search local wiki copy (synced from dev.iridi.com) by text query. Returns ranked results with titles, URLs, and snippets. | `python -m tools.wiki.search "<query>" [--top N] [--full]` |
+
+Requires wiki data synced to `C:\iridi\wiki-crawler\iridi-wiki-agent\data\` first.
 
 ## iRidi Script Patterns
 

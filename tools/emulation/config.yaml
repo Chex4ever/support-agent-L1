@@ -14,3 +14,8 @@ mdb:
 
 http_mock:
   port: 8002
+
+bacnet:
+  dir: C:\iridi\bacnet-e
+  web_port: 8003
+  udp_port: 47808

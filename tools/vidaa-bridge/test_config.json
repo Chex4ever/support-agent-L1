@@ -1,0 +1,11 @@
+{
+  "tv_ip": "10.0.0.1",
+  "tv_mac": "BB:CC:DD:EE:FF:00",
+  "tv_port": 36669,
+  "api_port": 8090,
+  "ui_port": 8889,
+  "no_tls": false,
+  "cert_file": "",
+  "key_file": "",
+  "log_file": ""
+}

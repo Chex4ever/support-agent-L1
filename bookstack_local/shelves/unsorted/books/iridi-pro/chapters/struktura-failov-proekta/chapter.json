@@ -1,0 +1,9 @@
+{
+  "id": 150,
+  "type": "chapter",
+  "name": "Структура файлов проекта",
+  "slug": "struktura-failov-proekta",
+  "book_id": 17,
+  "priority": 1,
+  "description": "Внутреннее устройство файлов проектов iRidi Pro: .irpz и .sirpz"
+}

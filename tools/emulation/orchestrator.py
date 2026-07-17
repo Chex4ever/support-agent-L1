@@ -14,6 +14,7 @@ import yaml
 
 from .knx_client import KnxClient
 from .mdb_client import MdbClient
+from .bacnet_client import BacnetClient
 from .http_mock import app as http_mock_app
 
 logger = logging.getLogger("emulation.orchestrator")
@@ -33,6 +34,11 @@ DEFAULT_CONFIG = {
     "http_mock": {
         "port": 8002,
     },
+    "bacnet": {
+        "dir": os.environ.get("BACNET_E_DIR", r"C:\iridi\bacnet-e"),
+        "web_port": 8003,
+        "udp_port": 47808,
+    },
 }
 
 
@@ -40,7 +46,7 @@ def load_config(path: str | None = None) -> dict[str, Any]:
     if path and Path(path).exists():
         with open(path, encoding="utf-8") as f:
             cfg = yaml.safe_load(f) or {}
-        for section in ("knx", "mdb", "http_mock"):
+        for section in ("knx", "mdb", "http_mock", "bacnet"):
             if section not in cfg:
                 cfg[section] = DEFAULT_CONFIG[section]
             else:
@@ -57,6 +63,7 @@ class EmulationStack:
         self._processes: list[subprocess.Popen] = []
         self.knx: KnxClient | None = None
         self.mdb: MdbClient | None = None
+        self.bacnet: BacnetClient | None = None
 
     def _start_subprocess(self, cwd: str, *args: str) -> subprocess.Popen:
         logger.info("Starting: %s in %s", " ".join(args), cwd)
@@ -71,7 +78,7 @@ class EmulationStack:
         return proc
 
     def start(self, skip_knx: bool = False, skip_mdb: bool = False,
-              skip_http: bool = False) -> dict[str, Any]:
+              skip_http: bool = False, skip_bacnet: bool = False) -> dict[str, Any]:
         started: list[str] = []
 
         if not skip_knx:
@@ -110,6 +117,17 @@ class EmulationStack:
             t.start()
             started.append("http-mock")
 
+        if not skip_bacnet:
+            bacnet_cfg = self.config["bacnet"]
+            self._start_subprocess(
+                bacnet_cfg["dir"],
+                sys.executable, "bacnet-e.py",
+                "--web-port", str(bacnet_cfg["web_port"]),
+                "--port", str(bacnet_cfg["udp_port"]),
+            )
+            self.bacnet = BacnetClient(f"http://localhost:{bacnet_cfg['web_port']}")
+            started.append("bacnet-e")
+
         return {"started": started}
 
     def wait_ready(self, timeout: float = 30) -> dict[str, bool]:
@@ -129,6 +147,12 @@ class EmulationStack:
                     statuses["mdb-e"] = True
                 except Exception:
                     statuses["mdb-e"] = False
+            if self.bacnet:
+                try:
+                    s = self.bacnet.status()
+                    statuses["bacnet-e"] = s.get("running", False)
+                except Exception:
+                    statuses["bacnet-e"] = False
             result.update(statuses)
             if all(result.values()):
                 return result
@@ -193,6 +217,13 @@ class EmulationStack:
                 summary["mdb-e"] = {"status": s, "devices": len(devs)}
             except Exception as e:
                 summary["mdb-e"] = {"error": str(e)}
+        if self.bacnet:
+            try:
+                s = self.bacnet.status()
+                objs = self.bacnet.get_objects()
+                summary["bacnet-e"] = {"status": s, "objects": len(objs)}
+            except Exception as e:
+                summary["bacnet-e"] = {"error": str(e)}
         summary["http_mock"] = {"port": self.config["http_mock"]["port"]}
         return summary
 
@@ -209,3 +240,5 @@ class EmulationStack:
             self.knx.close()
         if self.mdb:
             self.mdb.close()
+        if self.bacnet:
+            self.bacnet.close()
